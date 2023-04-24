@@ -6,18 +6,6 @@
     <content><![CDATA[<h1 id="这是搭建自己第一个博客后的第一篇文章"><a href="#这是搭建自己第一个博客后的第一篇文章" class="headerlink" title="这是搭建自己第一个博客后的第一篇文章"></a>这是搭建自己第一个博客后的第一篇文章</h1>]]></content>
   </entry>
   <entry>
-    <title>记录自己的初次搭建博客的经历——流程、路径与感悟</title>
-    <url>/2023/04/24/BlogBuilding/</url>
-    <content><![CDATA[<h1 id="搭建所需环境"><a href="#搭建所需环境" class="headerlink" title="搭建所需环境"></a>搭建所需环境</h1><h2 id="1-站点部署在哪？"><a href="#1-站点部署在哪？" class="headerlink" title="1.站点部署在哪？"></a>1.站点部署在哪？</h2><p>在最开始，面对各种搭建网站的框架，本人其实是迷茫的，因为我一时间无法理解为什么经过这些步骤就能够产出一个可以被访问的页面？<br>直到我在站点快搭建完成时，我才突然明白其原理，或许接下来的要说理解有点不准确，但是仍然在这里记录一下：  </p>
-<ol>
-<li>首先，需要理解的就是，网络上所有的资源都是以二进制的方式传输的，网站也是这样，传输的是010101的数据流，而不是直接将<br>页面呈现在电脑上。数据在经过网络传输至本地的时候，需要本地利用某种“解码软件”将其转换成更高级的、便于用户阅读、输入的模<br>式。浏览器其实就是将01数据解析成html等代码，然后再通过渲染、代码执行，将数据以GUI的形式呈现出来的解析器。</li>
-<li>那么，为什么可以将页面文件夹的一整个数据包托管至某个服务器，从而能够对外可见呢？在GitHub中，如果你建立一个仓库，并将<br>网站数据上传至仓库，利用GitHub Pages功能就可以将个人博客发布在互联网上。实际上，通过给仓库开通Pages功能，在输入**”用户  名.github.io**”时，你实际访问的是GitHub页面下你仓库的地址（这么说不知道对不对？），然后GitHub在你访问的时候，会检查仓<br>库中是否有index.html这一个文件，如果有，则告诉浏览器，让浏览器解析仓库内的数据资源，从而使得页面能够呈现出来。</li>
-<li>为什么是index.html？因为其是所有网站建设者约定俗成的一个最初始的入口文件，就好像python包中的__init__.py一样？</li>
-<li>在理清上述逻辑之后，那么我们就可以理解到一个事实：站点部署在哪里都是无所谓的，只要站点托管的地方能够提供这样一种”判断”  “解析”的服务即可，自己的电脑也可以作为server。只是PC经常保持不在线的状态，会影响用户访问。所以购买一个专门负责发送数  据的服务器成为网站搭建的必要步骤</li>
-</ol>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2023/04/20/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -34,5 +22,46 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>记录自己的初次搭建博客的经历——流程、路径与感悟</title>
+    <url>/2023/04/24/BlogBuilding/</url>
+    <content><![CDATA[<h1 id="搭建所需环境"><a href="#搭建所需环境" class="headerlink" title="搭建所需环境"></a>搭建所需环境</h1><h2 id="1-网站部署的原理和逻辑是什么？"><a href="#1-网站部署的原理和逻辑是什么？" class="headerlink" title="1.网站部署的原理和逻辑是什么？"></a>1.网站部署的原理和逻辑是什么？</h2><p>在最开始，面对各种搭建网站的框架，本人其实是迷茫的，因为我一时间无法理解为什么经过这些步骤就能够产出一个可以被访问的页面？<br>直到我在站点快搭建完成时，我才突然明白其原理，或许接下来的要说理解有点不准确，但是仍然在这里记录一下：  </p>
+<ol>
+<li>首先，需要理解的就是，网络上所有的资源都是以二进制的方式传输的，网站也是这样，传输的是010101的数据流，而不是直接将<br>页面呈现在电脑上。数据在经过网络传输至本地的时候，需要本地利用某种“解码软件”将其转换成更高级的、便于用户阅读、输入的模<br>式。浏览器其实就是将01数据解析成html等代码，然后再通过渲染、代码执行，将数据以GUI的形式呈现出来的解析器。</li>
+<li>那么，为什么可以将页面文件夹的一整个数据包托管至某个服务器，从而能够对外可见呢？在GitHub中，如果你建立一个仓库，并将<br>网站数据上传至仓库，利用GitHub Pages功能就可以将个人博客发布在互联网上。实际上，通过给仓库开通Pages功能，在输入**”用户名.github.io**”时，你实际访问的是GitHub页面下你仓库的地址（这么说不知道对不对？），然后GitHub在你访问的时候，会检查仓<br>库中是否有index.html这一个文件，如果有，则告诉浏览器，让浏览器解析仓库内的数据资源，从而使得页面能够呈现出来。</li>
+<li>为什么是index.html？因为其是所有网站建设者约定俗成的一个最初始的入口文件，就好像python包中的__init__.py一样。</li>
+<li>在理清上述逻辑之后，那么我们就可以理解到一个事实：站点部署在哪里都是无所谓的，只要站点托管的地方能够提供这样一种”判断”  “解析”的服务即可，自己的电脑也可以作为server。只是PC经常保持不在线的状态，会影响用户访问。所以购买一个专门负责发送数  据的服务器成为网站搭建的必要步骤，这种服务器专门处理访问网站的请求，效率上相对于PC高得多。</li>
+</ol>
+<h2 id="2-站点部署在哪？"><a href="#2-站点部署在哪？" class="headerlink" title="2.站点部署在哪？"></a>2.站点部署在哪？</h2><p>Github Pages，部署在这里的原因有两个：一是免费，二是顺带学习一下Github的用法<br>部署在这也有缺点，那就是国内访问不稳定</p>
+<h2 id="3-部署步骤？"><a href="#3-部署步骤？" class="headerlink" title="3.部署步骤？"></a>3.部署步骤？</h2><h3 id="git工具的安装、npm安装、Node-js安装（？）"><a href="#git工具的安装、npm安装、Node-js安装（？）" class="headerlink" title="* git工具的安装、npm安装、Node.js安装（？）"></a>* git工具的安装、npm安装、Node.js安装（？）</h3><p>Node.js和npm分别是什么？————问问chatGPT吧！</p>
+<h3 id="使用git将本地电脑与GitHub账户绑定"><a href="#使用git将本地电脑与GitHub账户绑定" class="headerlink" title="* 使用git将本地电脑与GitHub账户绑定"></a>* 使用git将本地电脑与GitHub账户绑定</h3><h3 id="创建一个Github仓库，命名格式严格要求为：用户名-github-io"><a href="#创建一个Github仓库，命名格式严格要求为：用户名-github-io" class="headerlink" title="* 创建一个Github仓库，命名格式严格要求为：用户名.github.io"></a>* 创建一个Github仓库，命名格式严格要求为：用户名.github.io</h3><h3 id="使用git命令行，将本地电脑的某个地址与github仓库关联，这个地址即是博客的文件所在，我命名为Blog"><a href="#使用git命令行，将本地电脑的某个地址与github仓库关联，这个地址即是博客的文件所在，我命名为Blog" class="headerlink" title="* 使用git命令行，将本地电脑的某个地址与github仓库关联，这个地址即是博客的文件所在，我命名为Blog"></a>* 使用git命令行，将本地电脑的某个地址与github仓库关联，这个地址即是博客的文件所在，我命名为Blog</h3><h3 id="在Blog下，用git-bash安装Hexo"><a href="#在Blog下，用git-bash安装Hexo" class="headerlink" title="* 在Blog下，用git bash安装Hexo"></a>* 在Blog下，用git bash安装Hexo</h3><h3 id="使用Hexo命令，创建、测试、部署"><a href="#使用Hexo命令，创建、测试、部署" class="headerlink" title="* 使用Hexo命令，创建、测试、部署"></a>* 使用Hexo命令，创建、测试、部署</h3><h2 id="4-主题个性化修改"><a href="#4-主题个性化修改" class="headerlink" title="4.主题个性化修改"></a>4.主题个性化修改</h2><h3 id="选择一个主题并根据github上面提供的主题使用方法进行配置，此步骤git命令往往是在Blog这个根目录下进行"><a href="#选择一个主题并根据github上面提供的主题使用方法进行配置，此步骤git命令往往是在Blog这个根目录下进行" class="headerlink" title="* 选择一个主题并根据github上面提供的主题使用方法进行配置，此步骤git命令往往是在Blog这个根目录下进行"></a>* 选择一个主题并根据github上面提供的主题使用方法进行配置，此步骤git命令往往是在Blog这个根目录下进行</h3><h3 id="主题目录参见Hexo主题官方集合"><a href="#主题目录参见Hexo主题官方集合" class="headerlink" title="* 主题目录参见Hexo主题官方集合"></a>* 主题目录参见<a href="https://hexo.io/themes/">Hexo主题官方集合</a></h3><h3 id="经过一系列尝试，最终使用butterfly主题"><a href="#经过一系列尝试，最终使用butterfly主题" class="headerlink" title="* 经过一系列尝试，最终使用butterfly主题"></a>* 经过一系列尝试，最终使用butterfly主题</h3><h3 id="个性化设置参见butterfly官方文档集，这是创作者的博客，博文全是详细的设置如何调整"><a href="#个性化设置参见butterfly官方文档集，这是创作者的博客，博文全是详细的设置如何调整" class="headerlink" title="* 个性化设置参见butterfly官方文档集，这是创作者的博客，博文全是详细的设置如何调整"></a>* 个性化设置参见<a href="https://butterfly.js.org/">butterfly官方文档集</a>，这是创作者的博客，博文全是详细的设置如何调整</h3><h2 id="5-博文上传与修改"><a href="#5-博文上传与修改" class="headerlink" title="5.博文上传与修改"></a>5.博文上传与修改</h2><h3 id="需要注意的是，Hexo框架才是个人博客的架构，博客发表、修改等应该使用Hexo命令来执行"><a href="#需要注意的是，Hexo框架才是个人博客的架构，博客发表、修改等应该使用Hexo命令来执行" class="headerlink" title="* 需要注意的是，Hexo框架才是个人博客的架构，博客发表、修改等应该使用Hexo命令来执行"></a>* 需要注意的是，Hexo框架才是个人博客的架构，博客发表、修改等应该使用Hexo命令来执行</h3><h3 id="butterfly只是一个美化的框架，负责显示效果的渲染和调整"><a href="#butterfly只是一个美化的框架，负责显示效果的渲染和调整" class="headerlink" title="* butterfly只是一个美化的框架，负责显示效果的渲染和调整"></a>* butterfly只是一个美化的框架，负责显示效果的渲染和调整</h3><h3 id="使用hexo命令创建新博文后，在source文件夹下可以找到。博文需要以md格式写作，本人使用VScode编写"><a href="#使用hexo命令创建新博文后，在source文件夹下可以找到。博文需要以md格式写作，本人使用VScode编写" class="headerlink" title="* 使用hexo命令创建新博文后，在source文件夹下可以找到。博文需要以md格式写作，本人使用VScode编写"></a>* 使用hexo命令创建新博文后，在source文件夹下可以找到。博文需要以md格式写作，本人使用VScode编写</h3><h3 id="md语法写作规范：Markdown官方教程"><a href="#md语法写作规范：Markdown官方教程" class="headerlink" title="* md语法写作规范：Markdown官方教程"></a>* md语法写作规范：<a href="https://markdown.com.cn/basic-syntax/">Markdown官方教程</a></h3><h2 id="6-过程中踩过的坑"><a href="#6-过程中踩过的坑" class="headerlink" title="6.过程中踩过的坑"></a>6.过程中踩过的坑</h2><h3 id="仓库中README-md文件，在depoly后一直被顶替，仓库页面显示不出md的描述来"><a href="#仓库中README-md文件，在depoly后一直被顶替，仓库页面显示不出md的描述来" class="headerlink" title="* 仓库中README.md文件，在depoly后一直被顶替，仓库页面显示不出md的描述来"></a>* 仓库中README.md文件，在depoly后一直被顶替，仓库页面显示不出md的描述来</h3><p>这个问题是Hexo的设置问题，不知道官方文档有没有提到，但是解决方法是：在Hexo目录下的source根目录下添加一个README.md。<br>修改Hexo目录下的_config.yml。将skip_render参数的值设置上。skip_render: README.md保存退出即可。使用hexo d 命令<br>就不会在渲染 README.md 这个文件了。<br>无法在仓库中手动添加README.md,因为部署时候会将仓库内容完全顶替为本地内容，只有在本地文件中也设置README才行。</p>
+<h3 id="网站在本地测试渲染失败"><a href="#网站在本地测试渲染失败" class="headerlink" title="* 网站在本地测试渲染失败"></a>* 网站在本地测试渲染失败</h3><p>可能是缺少相应的包，重新安装一遍即可，如果不确定，就从头都试一下<br>通常而言，应该安装的包有：Hexo所需的包+所用主题渲染所需的包  </p>
+<p>引出一个问题：包的作用是什么？</p>
+<ol>
+<li>主题包：hexo-theme-fluid 是加入主题</li>
+<li>渲染包：hexo-renderer-scss 是加入渲染引擎，因为Hexo里面可能并不支持主题内的一些样式</li>
+</ol>
+<p>又引出一个问题：为什么不支持？Hexo究竟是什么？<br>本人尚未了解，但是可以参见<a href="https://hexo.io/zh-cn/">Hexo官方文档</a></p>
+<h3 id="网站本地测试成功，部署到GitHub后远程渲染失败？"><a href="#网站本地测试成功，部署到GitHub后远程渲染失败？" class="headerlink" title="* 网站本地测试成功，部署到GitHub后远程渲染失败？"></a>* 网站本地测试成功，部署到GitHub后远程渲染失败？</h3><p>按F12，查看console，发现报错是Failed to load resource: the server responded with a status of 404 ()<br>原因在于国内与GitHub的连接犯抽……..一些文件没下载回来因而无法加载</p>
+<p>因为这个错误换了好多主题….本来其他主题也蛮漂亮的唉… </p>
+<p>但是新页面还有问题，可能在我不知道的地方起了作用，尽管显示没有问题：<br>Error with Permissions-Policy header: Origin trial controlled feature not enabled: ‘interest-cohort’.</p>
+<p>其实在途中还遇到一个错误，稀里糊涂就没有了。</p>
+<h2 id="7-后续考虑加入的功能"><a href="#7-后续考虑加入的功能" class="headerlink" title="7.后续考虑加入的功能"></a>7.后续考虑加入的功能</h2><h3 id="博客定时自动更新-（https-hexo-io-zh-cn-docs-one-command-deployment-html）"><a href="#博客定时自动更新-（https-hexo-io-zh-cn-docs-one-command-deployment-html）" class="headerlink" title="* [博客定时自动更新]（https://hexo.io/zh-cn/docs/one-command-deployment.html）"></a>* [博客定时自动更新]（<a href="https://hexo.io/zh-cn/docs/one-command-deployment.html%EF%BC%89">https://hexo.io/zh-cn/docs/one-command-deployment.html）</a></h3><p>很简单，没搞是因为没必要，学习是需要时间的，不需要频繁更新…….<br><img src="/BlogBuilding/Heroku.png" alt="Heroku" title="配置示例"></p>
+<h3 id="动态页面"><a href="#动态页面" class="headerlink" title="* 动态页面"></a>* 动态页面</h3><h3 id="真正理解Hexo的底层原理"><a href="#真正理解Hexo的底层原理" class="headerlink" title="* 真正理解Hexo的底层原理"></a>* 真正理解Hexo的底层原理</h3><h2 id="8-一些感想"><a href="#8-一些感想" class="headerlink" title="8.一些感想"></a>8.一些感想</h2><ul>
+<li>在配置过程中遇到过很多报错、和不了解的地方，直接搜索报错结果固然可以找到解决方法，但是很多可以查阅官方文档来解决。<br>查阅固然快，但往往会使得”知其然而不知其所以然”。直接搜答案的过程和询问chatGPT很类似，工程性的问题只答复解决步骤，而<br>不分析背后原理</li>
+<li>Hexo也许是一套程序，自动提供一套框架，功能是将我们提交的文本，按照模板或者自己设定的样子渲染出来。同样功能的还要jekell，但是好像是Linux上比较好用。Hexo是静态网页框架，对于博客够用，但是动态网页框架才是未来的选择。</li>
+<li>在编写md的时候还误用了中文符号导致md语法出错…….wssb</li>
+</ul>
+]]></content>
+      <categories>
+        <category>markdown,js,css</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Blog</tag>
+        <tag>Git</tag>
+        <tag>Github</tag>
+      </tags>
   </entry>
 </search>
