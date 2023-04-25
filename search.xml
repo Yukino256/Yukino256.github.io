@@ -4,19 +4,26 @@
     <title>AI绘画初步尝试：Stable Difussion本地部署及WebUI使用</title>
     <url>/2023/04/25/AIdrawing/</url>
     <content><![CDATA[<h2 id="1-安装conda、git、cuda"><a href="#1-安装conda、git、cuda" class="headerlink" title="1.	安装conda、git、cuda"></a>1.	安装conda、git、cuda</h2><p>Cuda版本需要首先查看自己nvida显卡参数，不能高于参数上的版本</p>
-<h2 id="2-Conda创建环境，"><a href="#2-Conda创建环境，" class="headerlink" title="2.	Conda创建环境，"></a>2.	Conda创建环境，</h2><p>python版本根据<a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">GitHub上的说明</a>来选择<br><code>conda create --name sdweb python=3.10.6</code></p>
-<h2 id="3-进入创建的虚拟环境"><a href="#3-进入创建的虚拟环境" class="headerlink" title="3.	进入创建的虚拟环境"></a>3.	进入创建的虚拟环境</h2><p><code>conda activate sdweb</code></p>
-<h2 id="4-在虚拟环境下克隆项目，注意：命令行需要cd到虚拟环境的目录，不然会默认git到c盘…"><a href="#4-在虚拟环境下克隆项目，注意：命令行需要cd到虚拟环境的目录，不然会默认git到c盘…" class="headerlink" title="4.	在虚拟环境下克隆项目，注意：命令行需要cd到虚拟环境的目录，不然会默认git到c盘…."></a>4.	在虚拟环境下克隆项目，注意：命令行需要cd到虚拟环境的目录，不然会默认git到c盘….</h2><p><code>git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git</code></p>
-<p>实际上好像在哪里都无所谓？但是部署在这个位置的时候，运行.bat的时候，命令行显示的是：<br><code>Creating venv in directory D:\Anaconda3\envs\sdweb\stable-diffusion-webui\venv using python &quot;D:\Anaconda3\python.exe&quot;</code><br><code>venv &quot;D:\Anaconda3\envs\sdweb\stable-diffusion-webui\venv\Scripts\Python.exe&quot;</code><br><code>Python 3.10.9 | packaged by Anaconda, Inc. | (main, Mar  1 2023, 18:18:15) [MSC v.1916 64 bit (AMD64)]</code></p>
-<p>没有用虚拟环境下的python版本哎….但是存储位置好歹是对了</p>
+<h2 id="2-Conda创建环境，"><a href="#2-Conda创建环境，" class="headerlink" title="2.	Conda创建环境，"></a>2.	Conda创建环境，</h2><p>python版本根据<a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">GitHub上的说明</a>来选择</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`conda create --name sdweb python=3.10.6`</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-进入创建的虚拟环境"><a href="#3-进入创建的虚拟环境" class="headerlink" title="3.	进入创建的虚拟环境"></a>3.	进入创建的虚拟环境</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`conda activate sdweb`</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-在虚拟环境下克隆项目，注意：命令行需要cd到虚拟环境的目录，不然会默认git到c盘…"><a href="#4-在虚拟环境下克隆项目，注意：命令行需要cd到虚拟环境的目录，不然会默认git到c盘…" class="headerlink" title="4.	在虚拟环境下克隆项目，注意：命令行需要cd到虚拟环境的目录，不然会默认git到c盘…."></a>4.	在虚拟环境下克隆项目，注意：命令行需要cd到虚拟环境的目录，不然会默认git到c盘….</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git`</span><br></pre></td></tr></table></figure>
+
+<p>实际上好像在哪里都无所谓？但是部署在这个位置的时候，运行.bat的时候，命令行显示的是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`Creating venv in directory D:\Anaconda3\envs\sdweb\stable-diffusion-webui\venv using python &quot;D:\Anaconda3\python.exe&quot;`</span><br><span class="line">`venv &quot;D:\Anaconda3\envs\sdweb\stable-diffusion-webui\venv\Scripts\Python.exe&quot;`</span><br><span class="line">`Python 3.10.9 | packaged by Anaconda, Inc. | (main, Mar  1 2023, 18:18:15) [MSC v.1916 64 bit (AMD64)]`</span><br></pre></td></tr></table></figure>
+
+<p>没有用虚拟环境下的python版本哎….但是存储位置好歹是对了 😇</p>
 <p>不对！或许应该在虚拟环境下用命令行运行这个.bat而不是点击！</p>
-<p>环境对了，但是运行时系统突然卡死一段时间…..不敢动不敢动 :innocent:<br>错误显示是Torch安装失败<img src="error1.png" alt="error" title="错误报告">，这个文章有提到把.bat的代码改一下，尝试之。</p>
-<p>第六行改为：<br><code>set COMMANDLINE_ARGS=--lowvram --precision full --no-half --skip-torch-cuda-test</code></p>
+<p>环境对了，但是运行时系统突然卡死一段时间……不敢动不敢动 😰<br>错误显示是Torch安装失败<img src="error1.png" alt="error" title="错误报告">，这个文章有提到把.bat的代码改一下，尝试之。</p>
+<p>第六行改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`set COMMANDLINE_ARGS=--lowvram --precision full --no-half --skip-torch-cuda-test`</span><br></pre></td></tr></table></figure>
+
 <p>这个.bat文件是另一个.bat的参数传入文件。</p>
-<p>又寄啦，而且途中很卡 :cold_sweat: </p>
+<p>又寄啦，而且途中很卡 😅</p>
 <hr>
-<hr>
-<h2 id="5-还是看看电子佛祖布施的法器吧嘉人们-sweat-smile"><a href="#5-还是看看电子佛祖布施的法器吧嘉人们-sweat-smile" class="headerlink" title="5.	还是看看电子佛祖布施的法器吧嘉人们 :sweat_smile:"></a>5.	还是看看电子佛祖布施的法器吧嘉人们 :sweat_smile:</h2><p> <strong>【AI绘画】Stable Diffusion整合包v4  <a href="https://www.bilibili.com/video/BV1iM4y1y7oA">BV1iM4y1y7oA</a></strong></p>
+<h2 id="5-还是看看电子佛祖布施的法器吧嘉人们-😋"><a href="#5-还是看看电子佛祖布施的法器吧嘉人们-😋" class="headerlink" title="5.	还是看看电子佛祖布施的法器吧嘉人们 😋"></a>5.	还是看看电子佛祖布施的法器吧嘉人们 😋</h2><p> <strong>【AI绘画】Stable Diffusion整合包v4  <a href="https://www.bilibili.com/video/BV1iM4y1y7oA">BV1iM4y1y7oA</a></strong></p>
 ]]></content>
       <categories>
         <category>python</category>
@@ -27,6 +34,24 @@
         <tag>Stable Difussion</tag>
         <tag>本地部署</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/04/20/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>记录自己的初次搭建博客的经历——流程、路径与感悟</title>
@@ -102,23 +127,5 @@
     <title>YukinoのBlog</title>
     <url>/2023/04/20/bolgname/</url>
     <content><![CDATA[<h1 id="这是搭建自己第一个博客后的第一篇文章"><a href="#这是搭建自己第一个博客后的第一篇文章" class="headerlink" title="这是搭建自己第一个博客后的第一篇文章"></a>这是搭建自己第一个博客后的第一篇文章</h1>]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2023/04/20/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
 </search>
