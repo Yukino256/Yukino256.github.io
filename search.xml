@@ -128,4 +128,36 @@
     <url>/2023/04/20/bolgname/</url>
     <content><![CDATA[<h1 id="这是搭建自己第一个博客后的第一篇文章"><a href="#这是搭建自己第一个博客后的第一篇文章" class="headerlink" title="这是搭建自己第一个博客后的第一篇文章"></a>这是搭建自己第一个博客后的第一篇文章</h1>]]></content>
   </entry>
+  <entry>
+    <title>云服务器使用及QQ机器人搭建</title>
+    <url>/2023/06/15/PcrQQbot/</url>
+    <content><![CDATA[<h2 id="1-服务器选择"><a href="#1-服务器选择" class="headerlink" title="1.	服务器选择"></a>1.	服务器选择</h2><p>三个主流的：阿里云、腾讯云、华为云。萌新的我需要三选一<br>华为云没用过。阿里云学生认证可以白嫖，腾讯云学生认证是打折，看着蛮便宜，但是这个时间买是1.9折，去年11月是1.1折。</p>
+<p>服务器使用阿里云，因为可以白嫖7个月，新手上路还是找免费的试一下比较好，随便造，造坏了也不心疼。</p>
+<p>cpu、内存这些东西就是看钱的啦，根据需要购买合适的就行。<br>系统这个东西，不太清楚是怎么选择的。本人选择Ubuntu的依据是：尽管windows很熟悉，但是几个资深程序员的哥们儿用的都是Linux内核系统；此外，Liunx相对于windows的内存占用要小太多了，服务器还是要抠抠搜搜一点。<br>Linux提供服务好像也蛮方便的</p>
+<h2 id="2-服务器操作"><a href="#2-服务器操作" class="headerlink" title="2.	服务器操作"></a>2.	服务器操作</h2><p>跟着阿里的教程走下来，基本上就会怎么操纵服务器了。远程连接服务器有两种方式：Workbench和VNC，前者似乎只能用命令行输入，后者则可以安装GUI。</p>
+<p>实际上，不同云服务商对于自己云服务器的名称和操纵方式是有所不同的。</p>
+<h2 id="3-图形界面的安装"><a href="#3-图形界面的安装" class="headerlink" title="3.	图形界面的安装"></a>3.	图形界面的安装</h2><p>我的一个朋友对我说，只有当你能够用命令行完成你想要的所有操作后，你才算是真正懂计算机，我觉得很有道理。目前还没有这个能力，先用带GUI的VNC试一下，后续需要理解Workbench的命令行是什么东西，如何操作。其实目前在没有GUI的情况下无法理解系统内部结构。</p>
+<p>GUI安装流程的方法，阿里云本身有<a href="https://help.aliyun.com/document_detail/59330.html">提供</a>，最终选择的系统是Ubuntun20.04。<br>一开始选择的18.04的造了半天python安装还是出问题。因为机器人需求3.8的python，18.04默认是3.6，升级过程中会出现很多问题。</p>
+<h2 id="4-PCR会战机器人的选择"><a href="#4-PCR会战机器人的选择" class="headerlink" title="4.	PCR会战机器人的选择"></a>4.	PCR会战机器人的选择</h2><p>之前主流是yobot，但是会战改版后用不了了，开发者不更新了。<br><a href="https://github.com/Ice9Coffee/HoshinoBot">HoshinoBot</a>是我一开始配置的，结果用不了会战功能，但是其他花里胡哨的似乎挺全。配置方法按照这个Liunx的安装流程走就是了。</p>
+<p>实际上好像在哪里都无所谓？但是部署在这个位置的时候，运行.bat的时候，命令行显示的是：</p>
+<p>顶级难蚌：18.04在numpy上安装疯狂失败，20.04一路绿灯😅<br><img src="success.png" alt="success" title="成功"></p>
+<p>我这个服务器的带宽低，不用清华镜像的时候很慢。应该加上镜像设置的命令😇</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`python3.8 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt`</span><br></pre></td></tr></table></figure>
+
+
+<p><a href="https://github.com/eggggi/yobot_remix">yobot_remix</a>是yobot针对新版公会战的魔改，实测公会战能用。由于是基于yobot改的，<a href="https://yobot.pcrbot.com/features/">命令和部署方法</a>大体也和yobot相同</p>
+<h2 id="5-机器人没响应"><a href="#5-机器人没响应" class="headerlink" title="5.	机器人没响应"></a>5.	机器人没响应</h2><p>典中典，被风控了，可以自行搜索解决方法。<br><a href="https://github.com/Mrs4s/go-cqhttp/issues/958">这个</a>里面的高赞回答很有用</p>
+<hr>
+<h2 id="后记阿里云给我白嫖7个月…应该尽快学习Docker的用法，方便后续迁移😋"><a href="#后记阿里云给我白嫖7个月…应该尽快学习Docker的用法，方便后续迁移😋" class="headerlink" title="后记	阿里云给我白嫖7个月…应该尽快学习Docker的用法，方便后续迁移😋"></a>后记	阿里云给我白嫖7个月…应该尽快学习Docker的用法，方便后续迁移😋</h2>]]></content>
+      <categories>
+        <category>python</category>
+        <category>Liunx</category>
+        <category>Ubuntu20.04</category>
+      </categories>
+      <tags>
+        <tag>QQbot</tag>
+        <tag>阿里云</tag>
+        <tag>cloud_server</tag>
+      </tags>
+  </entry>
 </search>
