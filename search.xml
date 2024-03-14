@@ -160,4 +160,121 @@
         <tag>cloud_server</tag>
       </tags>
   </entry>
+  <entry>
+    <title>第一次实习前的一些准备工作与知识储备</title>
+    <url>/2024/03/14/%E5%AE%9E%E4%B9%A0%E5%87%86%E5%A4%87/</url>
+    <content><![CDATA[<h1 id="千帆杯原生应用挑战赛"><a href="#千帆杯原生应用挑战赛" class="headerlink" title="千帆杯原生应用挑战赛"></a>千帆杯原生应用挑战赛</h1><ol>
+<li><strong>大赛主旨</strong>：大赛以“创意无限·生成未来”为主题，紧密围绕当前AI技术的前沿动态和应用趋势，借助百度智能云千帆AppBuilder和ModelBuilder两大智能开发助手，鼓励参赛者打造出更多具有创新性、实用性和社会价值的AI原生应用  <ul>
+<li><strong>第一期</strong>：游乐场排队规划助手：赛题聚焦春节假期游乐园排队效率问题，鼓励开发者利用 AI 能力施展“时间魔法”，打造一款具有实用性的“游乐场排队规划助手”，帮助游客更好地了解乐园的排队情况，设计个性化的游玩路线，在有限的时间内获得最“High”的体验，同时为管理者提供优化运营策略的决策支持。  <blockquote>
+<ul>
+<li>此大赛没有规定数据集，需求成果是使用主办方框架的应用程序。参赛者需要自己获取相关数据，如大赛第一名使用的是香港迪士尼数据</li>
+</ul>
+</blockquote>
+</li>
+<li><strong>第二期</strong>：生成一个可制作贺岁文案内容的精调模型（限定使用ERNIE Speed，通过对模型精调使其保持原有能力的同时，具备准确理解并执行文案创作中创作长度相关指令的能力）。<blockquote>
+<ul>
+<li>此大赛提供了少量数据集（56）条，同时要求对数据集进行扩展（最终至少需要100条数据），数据为json形式</li>
+<li>与第一期不同，此期是方向特化的微调模型开发，需要使用主办方框架</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>大赛形式</strong>：<ul>
+<li><strong>第一期</strong>：基于AppBuilder平台提供的强大开发套件和资源环境，使用平台预置的Agent框架，以零代码的方式创建Agent智能体，自动化调用各种工具打造游乐场排队规划助手AI原生应用。<blockquote>
+<ul>
+<li>游客只需要输入时间预算和游玩喜好，Agent智能体就能生成并执行Python代码，求解优化问题，智能规划出游玩项目路线。<br>————————生成python，求解optimization问题的agent</li>
+</ul>
+</blockquote>
+</li>
+<li><strong>第二期</strong>：通过在千帆大模型平台使用平台上的各种模型调优工具，结合相关数据，基于ERNIE-Speed调优生成符合赛题主题要求且效果优秀的模型。  <blockquote>
+<ul>
+<li>作品信息需包含：  <blockquote>
+<pre><code>微调后的模型效果展示（输入输出示例截图）
+</code></pre>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<pre><code>部署后的模型API文档（包含url地址、超参配置和步骤描述）  
+access_token；
+</code></pre>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="闻达：一个大规模语言模型调用平台"><a href="#闻达：一个大规模语言模型调用平台" class="headerlink" title="闻达：一个大规模语言模型调用平台"></a><a href="https://github.com/wenda-LLM/wenda">闻达：一个大规模语言模型调用平台</a></h1><h2 id="1-知识库检索增强"><a href="#1-知识库检索增强" class="headerlink" title="1. 知识库检索增强"></a><strong>1.</strong> <strong>知识库检索增强</strong></h2><blockquote>
+<ul>
+<li><strong>sentence_transformers + 检索，支持faiss&#x2F;fess检索，可以选择本地&#x2F;在线检索、索引预先&#x2F;实时构建</strong></li>
+<li><strong>没有提到长文本能力，仅仅是取决于model本身的功能</strong></li>
+</ul>
+</blockquote>
+<h1 id="DeepBI"><a href="#DeepBI" class="headerlink" title="DeepBI"></a><a href="https://github.com/DeepInsight-AI/DeepBI/tree/main">DeepBI</a></h1><h2 id="1-定义-x2F-底模"><a href="#1-定义-x2F-底模" class="headerlink" title="1. 定义&#x2F;底模"></a><strong>1.</strong> <strong>定义&#x2F;底模</strong></h2><blockquote>
+<ul>
+<li><strong>基于OPENAI GPT4 模型开发的BI系统，可以自动生成sql与图表</strong></li>
+<li><strong>核心问题是：如何在通过API的情况下优化SQL生成与结果分析？图表生成是模型生成还是调用某些库方法？</strong></li>
+</ul>
+</blockquote>
+<h1 id="CodeT5"><a href="#CodeT5" class="headerlink" title="CodeT5+"></a>CodeT5+</h1><ol>
+<li><h2 id="模型结构：encoder-decoder结构"><a href="#模型结构：encoder-decoder结构" class="headerlink" title="模型结构：encoder-decoder结构"></a><strong>模型结构：encoder-decoder结构</strong></h2><ul>
+<li><strong>编码器学习从代码&#x2F;文本序列（完整、部分或跨度屏蔽序列）中对上下文表示进行编码。</strong></li>
+<li><strong>根据预训练学习任务，解码器被训练以生成不同类型的输出。</strong></li>
+<li><strong>预训练任务的混合使模型能够学习代码上下文的有意义的表示，并在不同级别恢复丢失的信息：代码跨度、部分程序和完整程序。</strong></li>
+</ul>
+</li>
+<li><h2 id="训练策略：多任务混合"><a href="#训练策略：多任务混合" class="headerlink" title="训练策略：多任务混合"></a><strong>训练策略：多任务混合</strong></h2><ul>
+<li><strong>目的是增强LLM的理解能力</strong></li>
+<li><strong>结合了不同类型的学习任务，包括span denoising, causal language modeling (CLM), text-code contrastive learning, and matching tasks（跨度去噪、因果语言建模（CLM）、文本代码对比学习和匹配任务）。他们发现，如此广泛的预训练任务集可以帮助模型从代码和文本数据中学习丰富的表示，并弥合各种应用中的预训练微调差距。</strong></li>
+<li><strong>如何实现通过对模型进行调整加速训练？—————shallow encoder and deep decoder策略</strong>  <blockquote>
+<ul>
+<li><strong>keep the small encoder and the cross-attention layers trainable while freezing the deep decoder LLM. ————Such architecture is designed with the intuition that the decoder is often employed to deal with a higher level of complexity in generation tasks and requires a larger number of neural parameters.</strong></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><h2 id="训练trick"><a href="#训练trick" class="headerlink" title="训练trick"></a><strong>训练trick</strong></h2><ul>
+<li><strong>unimodal code data and bimodal code-text data.（纯代码 + 代码与注释？）</strong></li>
+<li><strong>二阶段预训练策略（实践证明可以增强更丰富的文本表示）</strong><blockquote>
+<ul>
+<li><strong>第一阶段只采用纯代码训练：从GitHub等开源平台获得了数据（许可证）。总共采用了九种编程语言的多语言培训数据。</strong></li>
+<li><strong>第二阶段采用代码+文本作为训练数据：每个数据样本都包含一个文本代码对，其中包括一个代码函数及其相应的描述函数语义的文档字符串。</strong></li>
+</ul>
+</blockquote>
+</li>
+<li><strong>Instruction Tuning</strong><blockquote>
+<ul>
+<li><strong>tuning the models with synthetic instruction-following tasks</strong></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+ <br>
+  <br>
+
+<h1 id="下列为可能参考到的论文及启发点"><a href="#下列为可能参考到的论文及启发点" class="headerlink" title="下列为可能参考到的论文及启发点"></a>下列为可能参考到的论文及启发点</h1><h1 id="————LLM-agent-for-generating-code-with-python-and-SQL"><a href="#————LLM-agent-for-generating-code-with-python-and-SQL" class="headerlink" title="————LLM agent for generating code with python and SQL"></a>————LLM agent for generating code with python and SQL</h1><h2 id="1-CleanAgent-Automating-Data-Standardization-with-LLM-based-Agents"><a href="#1-CleanAgent-Automating-Data-Standardization-with-LLM-based-Agents" class="headerlink" title="1. CleanAgent: Automating Data Standardization with LLM-based Agents"></a>1. CleanAgent: Automating Data Standardization with LLM-based Agents</h2><blockquote>
+<ul>
+<li><strong>提出一个具有声明性、统一 API 的 Python 库，用于标准化列类型，通过简洁的 API 调用简化 LLM 的代码生成。</strong></li>
+<li><strong>类似与midware的思想，加了一个中间层方便tuning，实际价值似乎不大</strong></li>
+</ul>
+</blockquote>
+<h2 id="2-LiveCodeBench-Holistic-and-Contamination-Free-Evaluation-of-Large-Language-Models-for-Code"><a href="#2-LiveCodeBench-Holistic-and-Contamination-Free-Evaluation-of-Large-Language-Models-for-Code" class="headerlink" title="2. LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code"></a>2. LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code</h2><blockquote>
+<ul>
+<li><strong>一套code generation效果评价方法，MIT伯克利大学出品，或许可以一试</strong></li>
+</ul>
+</blockquote>
+<h2 id="3-KnowCoder-Coding-Structured-Knowledge-into-LLMs-for-Universal-Information-Extraction"><a href="#3-KnowCoder-Coding-Structured-Knowledge-into-LLMs-for-Universal-Information-Extraction" class="headerlink" title="3. KnowCoder: Coding Structured Knowledge into LLMs for Universal Information Extraction"></a>3. KnowCoder: Coding Structured Knowledge into LLMs for Universal Information Extraction</h2><blockquote>
+<ul>
+<li><strong>中国科学院大学CAS Key Laboratory of Network Data Science and Technology出品</strong></li>
+<li><strong>旨在开发一种LLM易于理解的统一模式表示，以及鼓励LLM遵循模式并准确提取结构化知识的有效学习框架（Universal Information Extraction (UIE) task）</strong></li>
+<li><strong>已有UIE方法的一些不足：在类别及其归属的判定上、关联与实体的存在条件判断上不足；classification label&#x2F;自然语言 对LLM来说需要更多资源去理解；缺乏通用性</strong></li>
+<li><strong>此文章实际上是用python代码来表示知识和信息，是information to python再to knowledge的过程</strong></li>
+</ul>
+</blockquote>
+]]></content>
+  </entry>
 </search>
