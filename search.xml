@@ -225,7 +225,7 @@
 </blockquote>
 <blockquote>
 <ul>
-<li><strong>大模型拓展操作：扩展金融行业词表；增量训练行业金融200B规模，涵盖中英文财报、研报、新闻、书籍、论坛等多种类型数据；$\color {red} {训练上下文扩展到16K，借助NTK和LogN等技术，推理长度可以扩展到64K；}$</strong></li>
+<li><strong>大模型拓展操作：扩展金融行业词表；增量训练行业金融200B规模，涵盖中英文财报、研报、新闻、书籍、论坛等多种类型数据；</strong><br><strong><font color="#FF0000">训练上下文扩展到16K，借助NTK和LogN等技术，推理长度可以扩展到64K</font></strong></li>
 </ul>
 </blockquote>
 <h2 id="2-通义千问AI挑战赛-Code-Qwen能力算法赛道"><a href="#2-通义千问AI挑战赛-Code-Qwen能力算法赛道" class="headerlink" title="2. 通义千问AI挑战赛 - Code Qwen能力算法赛道"></a><strong>2. 通义千问AI挑战赛 - Code Qwen能力算法赛道</strong></h2><blockquote>
@@ -267,7 +267,13 @@
 <h1 id="DeepBI"><a href="#DeepBI" class="headerlink" title="DeepBI"></a><a href="https://github.com/DeepInsight-AI/DeepBI/tree/main">DeepBI</a></h1><h2 id="1-定义-x2F-底模"><a href="#1-定义-x2F-底模" class="headerlink" title="1. 定义&#x2F;底模"></a><strong>1.</strong> <strong>定义&#x2F;底模</strong></h2><blockquote>
 <ul>
 <li><strong>基于OPENAI GPT4 模型开发的BI系统，可以自动生成sql与图表</strong></li>
-<li><strong>核心问题是：如何在通过API的情况下优化SQL生成与结果分析？图表生成是模型生成还是调用某些库方法？</strong></li>
+<li><strong>核心问题是：如何在通过API的情况下优化SQL生成与结果分析？图表生成是模型生成还是调用某些库方法？</strong><blockquote>
+<ul>
+<li><strong>初步判断是用了python的第三方包，如pyecharts等进行图表生成；完全调用GPT4 API，似乎仅在prompt上做了一些简单的处理？</strong></li>
+<li><strong>还是midware的思想；在代码生成上，没有做到交叉生成，python和sql生成是分开的</strong></li>
+</ul>
+</blockquote>
+</li>
 </ul>
 </blockquote>
 <h1 id="CodeT5"><a href="#CodeT5" class="headerlink" title="CodeT5+"></a>CodeT5+</h1><ol>
