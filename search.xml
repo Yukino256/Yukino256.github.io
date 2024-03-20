@@ -336,4 +336,15 @@
 </blockquote>
 ]]></content>
   </entry>
+  <entry>
+    <title>DailyRecord-March</title>
+    <url>/2024/03/20/DailyRecord-March/</url>
+    <content><![CDATA[<h1 id="3-20"><a href="#3-20" class="headerlink" title="3.20"></a>3.20</h1><p><strong>入职的第一天，接到的任务是：把闻达的demo在服务器上用docker给搭建出来。于是我在服务器上先创建了一个miniconda3的docker，然后使用conda安装了一些依赖、git项目等；其间遇到一个问题：docker+conda后，尽管bash上显示是root，但是好像是一个虚拟的root，没有sudo等的执行文件，需要重新安装一下。此外，公司的网有点差，清华源1Mb、不用清华源只有几十kb。因而进展较慢</strong><br><strong>部署步骤进行到了模型下载这一步，但是因为网不好所以连不上hugging face，需要搭梯子。下班了，明天再搞！</strong>  </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：搞定梯子，下载好生成模型和embedding模型，最终完成demo，并调整远程访问展示</strong></li>
+</ul>
+</blockquote>
+]]></content>
+  </entry>
 </search>
