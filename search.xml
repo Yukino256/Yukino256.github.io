@@ -345,6 +345,12 @@
 <li><strong>明日任务：搞定梯子，下载好生成模型和embedding模型，最终完成demo，并调整远程访问展示</strong></li>
 </ul>
 </blockquote>
+<h1 id="3-21"><a href="#3-21" class="headerlink" title="3.21"></a>3.21</h1><p><strong>今天签合同了。</strong><br><strong>搭梯子问题卡了好久😡。这国企是一天也不能待了，网差的要死。最后还是前辈哥帮忙解决的。</strong><br><strong>但是terminal的命令，下载的那些怎么都那么几把慢啊！网速是压力之源！</strong><br><strong>更悲剧的是：今日闻达demo部署至最后一步无法运行…………..</strong><br><strong>可能是docker的问题，因而将其删除从头开始搭建。如果明天仍然不行，则尝试不用docker直接在服务器上部署</strong>  </p>
+<h2 id="他妈的！狗日的北京通勤太痛苦了！"><a href="#他妈的！狗日的北京通勤太痛苦了！" class="headerlink" title=" 他妈的！狗日的北京通勤太痛苦了！ "></a><font color="red"> <strong>他妈的！狗日的北京通勤太痛苦了！</strong> </font></h2><blockquote>
+<ul>
+<li><strong>明日任务：wenda的demo。哎我真佛了这个b服务器 + docker好难用，不能直接在服务器安装conda吗，conda创建虚拟环境不也挺方便的</strong></li>
+</ul>
+</blockquote>
 ]]></content>
   </entry>
 </search>
