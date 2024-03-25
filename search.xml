@@ -351,6 +351,26 @@
 <li><strong>明日任务：wenda的demo。哎我真佛了这个b服务器 + docker好难用，不能直接在服务器安装conda吗，conda创建虚拟环境不也挺方便的</strong></li>
 </ul>
 </blockquote>
+<h1 id="3-22"><a href="#3-22" class="headerlink" title="3.22"></a>3.22</h1><p><strong>创建了一个git的container，但是在安装lfs的时候出了问题，需要用sudo等一些命令，但是apt下载很慢，似乎需要在docker file文件中就更换镜像源</strong><br><strong>了解了docker中与宿主机相互cp文件、docker在创建时需要用GPU对容器可见的命令；</strong></p>
+<blockquote>
+<ul>
+<li>docker run -it –net&#x3D;host –gpus all –name 容器名 -e NVIDIA_DRIVER_CAPABILITIES&#x3D;compute,utility -e NVIDIA_VISIBLE_DEVICES&#x3D;all 镜像名</li>
+</ul>
+</blockquote>
+<p><strong>闻达demo终于无报错安装起来了</strong><br><strong>但是运行的时候，模型似乎卡住&#x2F;死循环？不返回计算结果。</strong>  </p>
+<h2 id="他妈的！压力一天比一天大！EMO了要！"><a href="#他妈的！压力一天比一天大！EMO了要！" class="headerlink" title=" 他妈的！压力一天比一天大！EMO了要！ "></a><font color="red"> <strong>他妈的！压力一天比一天大！EMO了要！</strong> </font></h2><h2 id="今天美好的事情："><a href="#今天美好的事情：" class="headerlink" title="今天美好的事情："></a><strong>今天美好的事情：</strong></h2><p><strong>与SL、ZYR一起在附近那啥招待所吃川菜。味道不错，就是环境有点热、菜有点辣。此外，和ZYR一起自行车骑行，他一路讲解，聊的很开心！到北京以来为数不多的快乐时间。</strong><br><strong>SL骑着他那破电瓶车，本来跟我们一起的，半路给交警罚款了，就让他回去了，唉，我好难过</strong></p>
+<blockquote>
+<ul>
+<li><strong>下周任务：调整闻达demo</strong></li>
+</ul>
+</blockquote>
+<h1 id="3-23-3-24-周末！"><a href="#3-23-3-24-周末！" class="headerlink" title="3.23-3.24  周末！"></a>3.23-3.24  周末！</h1><p><strong>早上乘坐地铁到清河，和NJ汇合，一起去清河</strong><br><strong>做了半小时火车到怀来辣！比北京通勤还快。下了火车有一种终于逃离压力之源的舒畅感。</strong><br><strong>中文在饭店吃了什么洋葱和羊肉炒的东西，味道不错；然后还吃了莜面、炒扁豆角；喝了营养快线味的酸奶、杏仁露。杏仁露味道不错，加热和不加热是两个味道</strong><br><strong>吃完饭和NJ一起顺路去菜市场买了点粑粑柑（最后一口没吃带回北京了）。然后不行一阵子去了宾馆，双人间一晚90，条件还挺不错….要哭了</strong><br><strong>睡了午觉，然后出去找网吧打了几把大乱斗；下了新赛季的第一把云顶，玩不明白好痛苦，老六老七出局。然后出去转了转，看了一下县城的风土人情，买了西安特产甑糕，味道也不错。天气不好，阴沉天空使我不太开心。</strong><br><strong>相对于老家，这里明显更荒凉一些，没有人、没有年轻人。</strong><br><strong>晚上吃了砂锅。酸菜白肉和竹笋炖腊肉的砂锅；点了傀儡（土豆和面的混合物作为主食？），咸咸的，有葱花。点了冰糖芦荟，和椰果罐头一个味儿。吃完又转了转。回到宾馆玩了把金铲铲，然后下去买了10斤的半个西瓜和勺子。吃了一点，大头给NJ吃了（真能吃啊这B）</strong><br><strong>睡了一晚，第二天早上吃了豆面还是什么东西，然后走路去买了个吊炉烧饼分着尝尝；NJ点了驴肉和驴肠火烧的外卖，带回北京吃了</strong><br><strong>和NJ回北京了，BYD带我在海淀区骑了好久的自行车，最后在一家新疆馆子吃了抓饭和羊肉什么馍，喝了北京的汽水（和芬达一个味），吃的挺好。就是这b人带我转来转去最后吃这种快餐属实没绷住</strong></p>
+<h2 id><a href="#" class="headerlink" title="**"></a>**</h2><h1 id="3-25"><a href="#3-25" class="headerlink" title="3.25"></a>3.25</h1><p><strong>闻达demo部署完毕辣！</strong><br><strong>接下来需要：尝试更换通义7B&#x2F;14B的模型；查看闻达前端技术栈，与前端做交接让其修改；部署另一个&#x2F;几个项目（似乎要加班，tmd！）</strong>  </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：</strong></li>
+</ul>
+</blockquote>
 ]]></content>
   </entry>
 </search>
