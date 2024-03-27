@@ -371,10 +371,14 @@
 <li><strong>明日任务：或许需要看一下另一个agent代理的部署；看langchain和LLM的相关教程视频；RAG目前似乎有一套实践模板，基于faiss检索？</strong></li>
 </ul>
 </blockquote>
-<h1 id="3-26"><a href="#3-26" class="headerlink" title="3.26"></a>3.26</h1><p><strong>早上看langchain的视频教程</strong><br><strong>下午部署了wenda的二次开发webui，其中有报错；能保证基本的对话，但是文档对话功能用不了</strong><br><strong>部署了langchain-chatchat，可以基本运行，但存在一些问题，如知识库检索似乎没有工作、模型更换没有前端，需要在后端尝试修改</strong>  </p>
+<h1 id="3-26"><a href="#3-26" class="headerlink" title="3.26"></a>3.26</h1><p><strong>早上看langchain的视频教程</strong><br><strong>下午部署了wenda的二次开发webui，其中有报错；能保证基本的对话，但是文档对话功能用不了</strong><br><strong>下午抽空去免了腾讯的NLP应用研究实习生，他们是做腾讯视频剧本理解与智能助手的，感觉挺有意思。花了114定了钟点房，可惜面试的时候网不好、代码题也没敲出来，BERT的损失函数、交叉熵也没回答好。</strong>  </p>
 <ul>
-<li><strong>回家，地铁上和ZJX吐槽工作的事情，交流中得到片刻的安慰；到家后，和NJ电话聊了聊，大诉苦水，得到了一些开导和建议，好兄弟！；夜里躺在床上，和LF聊了聊他的离职和走全奖去美国读PHD躺平5年。唏嘘之余，有点羡慕</strong>  </li>
-<li><strong>似乎，上班的人状况都不是很好：ZYR精神衰弱吃药、LF压力大怼领导辞职、SX天天emo不想动，我自己的精神状态也不是很好，唉。唉！</strong><blockquote>
+<li><p><strong>和SH交流了一下面试的经历，他目前的实习产品经理似乎工资低但是很轻松。他说TX面试结果很快会出，就可以再投了，但是我到第二天也没看到结果</strong><br><strong>部署了langchain-chatchat，可以基本运行，但存在一些问题，如知识库检索似乎没有工作、模型更换没有前端，需要在后端尝试修改</strong>  </p>
+</li>
+<li><p><strong>回家，地铁上和ZJX吐槽工作的事情，交流中得到片刻的安慰；到家后，和NJ电话聊了聊，大诉苦水，得到了一些开导和建议，好兄弟！；夜里躺在床上，和LF聊了聊他的离职和走全奖去美国读PHD躺平5年。唏嘘之余，有点羡慕</strong>  </p>
+</li>
+<li><p><strong>似乎，上班的人状况都不是很好：ZYR精神衰弱吃药、LF压力大怼领导辞职、SX天天emo不想动，我自己的精神状态也不是很好，唉。唉！</strong></p>
+<blockquote>
 <ul>
 <li><strong>明日任务：调整部署项目，学习</strong></li>
 </ul>
