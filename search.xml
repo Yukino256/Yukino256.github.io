@@ -365,10 +365,26 @@
 </ul>
 </blockquote>
 <h1 id="3-23-3-24-周末！"><a href="#3-23-3-24-周末！" class="headerlink" title="3.23-3.24  周末！"></a>3.23-3.24  周末！</h1><p><strong>早上乘坐地铁到清河，和NJ汇合，一起去清河</strong><br><strong>做了半小时火车到怀来辣！比北京通勤还快。下了火车有一种终于逃离压力之源的舒畅感。</strong><br><strong>中文在饭店吃了什么洋葱和羊肉炒的东西，味道不错；然后还吃了莜面、炒扁豆角；喝了营养快线味的酸奶、杏仁露。杏仁露味道不错，加热和不加热是两个味道</strong><br><strong>吃完饭和NJ一起顺路去菜市场买了点粑粑柑（最后一口没吃带回北京了）。然后不行一阵子去了宾馆，双人间一晚90，条件还挺不错….要哭了</strong><br><strong>睡了午觉，然后出去找网吧打了几把大乱斗；下了新赛季的第一把云顶，玩不明白好痛苦，老六老七出局。然后出去转了转，看了一下县城的风土人情，买了西安特产甑糕，味道也不错。天气不好，阴沉天空使我不太开心。</strong><br><strong>相对于老家，这里明显更荒凉一些，没有人、没有年轻人。</strong><br><strong>晚上吃了砂锅。酸菜白肉和竹笋炖腊肉的砂锅；点了傀儡（土豆和面的混合物作为主食？），咸咸的，有葱花。点了冰糖芦荟，和椰果罐头一个味儿。吃完又转了转。回到宾馆玩了把金铲铲，然后下去买了10斤的半个西瓜和勺子。吃了一点，大头给NJ吃了（真能吃啊这B）</strong><br><strong>睡了一晚，第二天早上吃了豆面还是什么东西，然后走路去买了个吊炉烧饼分着尝尝；NJ点了驴肉和驴肠火烧的外卖，带回北京吃了</strong><br><strong>和NJ回北京了，BYD带我在海淀区骑了好久的自行车，最后在一家新疆馆子吃了抓饭和羊肉什么馍，喝了北京的汽水（和芬达一个味），吃的挺好。就是这b人带我转来转去最后吃这种快餐属实没绷住</strong></p>
-<h2 id><a href="#" class="headerlink" title="**"></a>**</h2><h1 id="3-25"><a href="#3-25" class="headerlink" title="3.25"></a>3.25</h1><p><strong>闻达demo部署完毕辣！</strong><br><strong>接下来需要：尝试更换通义7B&#x2F;14B的模型；查看闻达前端技术栈，与前端做交接让其修改；部署另一个&#x2F;几个项目（似乎要加班，tmd！）</strong>  </p>
+<h1 id="3-25"><a href="#3-25" class="headerlink" title="3.25"></a>3.25</h1><p><strong>闻达demo部署完毕辣！</strong><br><strong>接下来需要：尝试更换通义7B&#x2F;14B的模型；查看闻达前端技术栈，与前端做交接让其修改；部署另一个&#x2F;几个项目（似乎要加班，tmd！）</strong><br><strong>已经将底模更新为7B，但是14B可能需要双卡，还不了解他这个框架怎么放到双卡上；</strong><br><strong>前端框架不太清楚，但是有一个二次开发的前端框架正在尝试，但是服务器网不好，nodejs安装困难。</strong><br><strong>下午看了B站上的一个从零开始大模型，感觉有点收获。还有一部分没看完</strong> </p>
 <blockquote>
 <ul>
-<li><strong>明日任务：</strong></li>
+<li><strong>明日任务：或许需要看一下另一个agent代理的部署；看langchain和LLM的相关教程视频；RAG目前似乎有一套实践模板，基于faiss检索？</strong></li>
+</ul>
+</blockquote>
+<h1 id="3-26"><a href="#3-26" class="headerlink" title="3.26"></a>3.26</h1><p><strong>早上看langchain的视频教程</strong><br><strong>下午部署了wenda的二次开发webui，其中有报错；能保证基本的对话，但是文档对话功能用不了</strong><br><strong>部署了langchain-chatchat，可以基本运行，但存在一些问题，如知识库检索似乎没有工作、模型更换没有前端，需要在后端尝试修改</strong>  </p>
+<ul>
+<li><strong>回家，地铁上和ZJX吐槽工作的事情，交流中得到片刻的安慰；到家后，和NJ电话聊了聊，大诉苦水，得到了一些开导和建议，好兄弟！；夜里躺在床上，和LF聊了聊他的离职和走全奖去美国读PHD躺平5年。唏嘘之余，有点羡慕</strong>  </li>
+<li><strong>似乎，上班的人状况都不是很好：ZYR精神衰弱吃药、LF压力大怼领导辞职、SX天天emo不想动，我自己的精神状态也不是很好，唉。唉！</strong><blockquote>
+<ul>
+<li><strong>明日任务：调整部署项目，学习</strong></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h1 id="3-27"><a href="#3-27" class="headerlink" title="3.27"></a>3.27</h1><p><strong>早上给领导演示了一下两个demo，边上的前辈哥部署的DB-GPT也看了；这个效果挺好，但是也有要调整的地方。如服务器上部署模型的API调用等</strong><br><strong>看阿里Qwen的vllm教程视频，有所收获</strong><br><strong>部署了langchain-chatchat，可以基本运行，但存在一些问题，如知识库检索似乎没有工作、模型更换没有前端，需要在后端尝试修改</strong>  </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：调整部署项目，学习</strong></li>
 </ul>
 </blockquote>
 ]]></content>
