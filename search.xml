@@ -385,12 +385,23 @@
 </blockquote>
 </li>
 </ul>
-<h1 id="3-27"><a href="#3-27" class="headerlink" title="3.27"></a>3.27</h1><p><strong>早上给领导演示了一下两个demo，边上的前辈哥部署的DB-GPT也看了；这个效果挺好，但是也有要调整的地方。如服务器上部署模型的API调用等</strong><br><strong>看阿里Qwen的vllm教程视频，有所收获</strong><br><strong>部署了langchain-chatchat，可以基本运行，但存在一些问题，如知识库检索似乎没有工作、模型更换没有前端，需要在后端尝试修改</strong>  </p>
+<h1 id="3-27"><a href="#3-27" class="headerlink" title="3.27"></a>3.27</h1><p><strong>早上给领导演示了一下两个demo，边上的前辈哥部署的DB-GPT也看了；这个效果挺好，但是也有要调整的地方。如服务器上部署模型的API调用等</strong><br><strong>今天看阿里Qwen的vllm教程视频，大有收获</strong><br><strong>铸币吧，LLM聊天一个字一个字显示的效果原来是清屏+ 打印啊！前端或许就是&lt;div&gt;内部的反复刷新？</strong>  </p>
 <blockquote>
 <ul>
 <li><strong>明日任务：调整部署项目，学习</strong></li>
 </ul>
 </blockquote>
+<p>晚上，和妈妈聊了聊天，倾诉了一下。得知妹妹的奶奶肿瘤晚期，突然有一种恐惧和悲伤笼罩心头。帮妈妈网上填写了检查需要的材料，相关材料也进行了保存。与SH、LMD一起打了大乱斗，片刻的开心，但是过程中没有完全放松。</p>
+<h1 id="3-28"><a href="#3-28" class="headerlink" title="3.28"></a>3.28</h1><p><strong>继续学习qwen+vllm的宝藏up主。对asyncio的内容有些不理解。这个up主好像是c++、java高手，学习大模型相关内容上手也很快，我感到很挫败。</strong>  </p>
+<hr>
+<hr>
+<blockquote>
+<ul>
+<li><hr>
+</li>
+</ul>
+</blockquote>
+<p>悲苦萦绕心头，不能散去。可能真的是房子住的还是有点远，每天通勤1.5小时。或许我需要换租了。</p>
 ]]></content>
   </entry>
 </search>
