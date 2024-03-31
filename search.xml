@@ -371,7 +371,7 @@
 <li><strong>明日任务：或许需要看一下另一个agent代理的部署；看langchain和LLM的相关教程视频；RAG目前似乎有一套实践模板，基于faiss检索？</strong></li>
 </ul>
 </blockquote>
-<h1 id="3-26"><a href="#3-26" class="headerlink" title="3.26"></a>3.26</h1><p><strong>早上看langchain的视频教程</strong><br><strong>下午部署了wenda的二次开发webui，其中有报错；能保证基本的对话，但是文档对话功能用不了</strong><br><strong>下午抽空去免了腾讯的NLP应用研究实习生，他们是做腾讯视频剧本理解与智能助手的，感觉挺有意思。花了114定了钟点房，可惜面试的时候网不好、代码题也没敲出来，BERT的损失函数、交叉熵也没回答好。</strong>  </p>
+<h1 id="3-26"><a href="#3-26" class="headerlink" title="3.26"></a>3.26</h1><p><strong>早上看langchain的视频教程</strong><br><strong>下午部署了wenda的二次开发webui，其中有报错；能保证基本的对话，但是文档对话功能用不了</strong><br><strong>下午抽空去免了腾讯的NLP应用研究实习生，他们是做腾讯视频剧本理解与智能助手的，感觉挺有意思。花了114定了钟点房，可惜面试的时候网不好、代码题（手写交叉熵、双指针&#x2F;滑动数组解决list中满足和为n的最小连续长度）也没敲出来，BERT的损失函数、交叉熵也没回答好。</strong>  </p>
 <ul>
 <li><p><strong>和SH交流了一下面试的经历，他目前的实习产品经理似乎工资低但是很轻松。他说TX面试结果很快会出，就可以再投了，但是我到第二天也没看到结果</strong><br><strong>部署了langchain-chatchat，可以基本运行，但存在一些问题，如知识库检索似乎没有工作、模型更换没有前端，需要在后端尝试修改</strong>  </p>
 </li>
@@ -392,16 +392,21 @@
 </ul>
 </blockquote>
 <p>晚上，和妈妈聊了聊天，倾诉了一下。得知妹妹的奶奶肿瘤晚期，突然有一种恐惧和悲伤笼罩心头。帮妈妈网上填写了检查需要的材料，相关材料也进行了保存。与SH、LMD一起打了大乱斗，片刻的开心，但是过程中没有完全放松。</p>
-<h1 id="3-28"><a href="#3-28" class="headerlink" title="3.28"></a>3.28</h1><p><strong>继续学习qwen+vllm的宝藏up主。对asyncio的内容有些不理解。这个up主好像是c++、java高手，学习大模型相关内容上手也很快，我感到很挫败。</strong>  </p>
-<hr>
-<hr>
+<h1 id="3-28"><a href="#3-28" class="headerlink" title="3.28"></a>3.28</h1><p><strong>继续学习qwen+vllm的宝藏up主。对asyncio的内容有些不理解。这个up主好像是c++、java高手，学习大模型相关内容上手也很快，我感到很挫败。</strong><br><strong>小米面试，问Qquant还是啥的量化不了解，adapter不了解，代码题一是n个全排列中k个逆序对数量，完全不会；一个是写梯度下降求算术平方根，初始化值、lr和反向传播这些都写的不太好</strong><br><strong>下午，视频看的差不多了，准备看一下Dify是个什么东西</strong><br><strong>晚上，打SH、NJ打游戏，和妈妈视频，开森</strong><br><strong>和沈晓宇老师的师姐聊了聊城市、职业规划、未来发展，感觉认知更清晰了</strong></p>
 <blockquote>
 <ul>
-<li><hr>
-</li>
+<li><strong>明日任务：学习</strong></li>
 </ul>
 </blockquote>
 <p>悲苦萦绕心头，不能散去。可能真的是房子住的还是有点远，每天通勤1.5小时。或许我需要换租了。</p>
+<h1 id="3-28-1"><a href="#3-28-1" class="headerlink" title="3.28"></a>3.28</h1><p><strong>上午看了一会儿视频，然后捣鼓4090那台机子的docker和conda，没捣鼓出东西来。</strong><br><strong>下午问了前辈，了解怎么搞了，稍微搞了一点</strong><br><strong>下午，搞了会langchain-chatchat，发现推理慢的原因可能是gpu被占了；没找到如何更换模型为qwen</strong>  </p>
+<blockquote>
+<ul>
+<li><strong>下周任务：qwenllm&#x2F;qwen的docker image本地下载好并上传到远程服务器上，运行查看效果</strong></li>
+</ul>
+</blockquote>
+<h2 id="又-放-假-辣-！"><a href="#又-放-假-辣-！" class="headerlink" title=" 又 放 假 辣 ！ "></a><font color="red"> <strong>又 放 假 辣 ！</strong> </font></h2><h1 id="3-30-3-31-周末！"><a href="#3-30-3-31-周末！" class="headerlink" title="3.30-3.31  周末！"></a>3.30-3.31  周末！</h1><p><strong>周六早上，和SH打了LOL，中午出去吃了吉野家；下午躺了一会儿，然后晚上和NJ去逛了古玩市场，感觉有点同质化。</strong><br><strong>之后吃了白糖汁儿的杏仁豆腐，然后吃了永和大王的快餐，赶紧赶地铁回来参加TX的笔试题。但实际上我一面已经挂了，结果现在才出来，这题就没必要做了实际上，而且五题只做出来第一题，似乎打竞赛的才能做得出来多题，唉…</strong><br><strong>又和SH打了一会儿大乱斗</strong><br><strong>看小说，睡觉！</strong>  </p>
+<hr>
 ]]></content>
   </entry>
 </search>
