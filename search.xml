@@ -409,4 +409,18 @@
 <hr>
 ]]></content>
   </entry>
+  <entry>
+    <title>DailyRecord-April</title>
+    <url>/2024/04/01/DailyRecord-April/</url>
+    <content><![CDATA[<h1 id="4-1"><a href="#4-1" class="headerlink" title="4.1"></a>4.1</h1><p><strong>上午，把qwenllm&#x2F;qwen的docker image放到服务器上了，但是下午发现模型没放，还要下载72b-chat的模型再放上去；而且这个东西好像要自己写应该服务端py文件？</strong><br><strong>下午复习了以下long-context的论文，看了retrieval的一些如longllama，温故知新，没跳出已有框架的同时，感觉理解更深了</strong></p>
+<hr>
+<hr>
+<hr>
+<h2 id="虽然是愚人节，但是无事发生"><a href="#虽然是愚人节，但是无事发生" class="headerlink" title=" 虽然是愚人节，但是无事发生 "></a><font color="red"> <strong>虽然是愚人节，但是无事发生</strong> </font></h2><blockquote>
+<ul>
+<li><strong>明日任务：</strong></li>
+</ul>
+</blockquote>
+]]></content>
+  </entry>
 </search>
