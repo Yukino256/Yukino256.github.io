@@ -412,15 +412,20 @@
   <entry>
     <title>DailyRecord-April</title>
     <url>/2024/04/01/DailyRecord-April/</url>
-    <content><![CDATA[<h1 id="4-1"><a href="#4-1" class="headerlink" title="4.1"></a>4.1</h1><p><strong>上午，把qwenllm&#x2F;qwen的docker image放到服务器上了，但是下午发现模型没放，还要下载72b-chat的模型再放上去；而且这个东西好像要自己写应该服务端py文件？</strong><br><strong>下午复习了以下long-context的论文，看了retrieval的一些如longllama，温故知新，没跳出已有框架的同时，感觉理解更深了</strong></p>
-<hr>
-<hr>
-<hr>
+    <content><![CDATA[<h1 id="4-1"><a href="#4-1" class="headerlink" title="4.1"></a>4.1</h1><p><strong>上午，把qwenllm&#x2F;qwen的docker image放到服务器上了，但是下午发现模型没放，还要下载72b-chat的模型再放上去；而且这个东西好像要自己写应该服务端py文件？</strong><br><strong>下午复习了以下long-context的论文，看了retrieval的一些如longllama，温故知新，没跳出已有框架的同时，感觉理解更深了</strong><br><strong>晚上，和SH打了一把游戏，然后和沈老师开周会，汇报了一下自己目前的一些理解。得到下一步的研究内容是：把retrieval 的方式在大模型上都实现一下</strong><br><strong>之后，继续和SH、NJ一起打了大乱斗</strong>  </p>
 <h2 id="虽然是愚人节，但是无事发生"><a href="#虽然是愚人节，但是无事发生" class="headerlink" title=" 虽然是愚人节，但是无事发生 "></a><font color="red"> <strong>虽然是愚人节，但是无事发生</strong> </font></h2><blockquote>
 <ul>
-<li><strong>明日任务：</strong></li>
+<li><strong>明日任务：阅读论文；学习修改大模型的方法</strong></li>
 </ul>
 </blockquote>
+<h1 id="4-2"><a href="#4-2" class="headerlink" title="4.2"></a>4.2</h1><p><strong>上午，阅读qwen的model_qwen.py文件，尝试理解模型结构，寻找修改方法。最终目的是将kv retrieval加入到模型中去；目前没什么头绪，是直接改model文件，还是写个新的继承一下？继承的话如何与已有文件保持联系和交互？</strong><br><strong>qwen的py代码没有啥注释，突然想到可以看一下transformer包中的代码，拿llama做参考，希望有注释可以好看一点</strong><br><strong>吃了好大的饼</strong><br><strong>将4090机器上的qwen-72b-chat放到A800上，尝试让它跑起来；昨天前辈哥用vllm加速一些模型，基本上没跑起来报错，不知道是什么情况；没查到解决方案</strong></p>
+<blockquote>
+<ul>
+<li><strong><del>明日任务：</del> 明日个P！清明节假期！</strong><br><strong><del>好吧，这个饼还是挺不错的，也许会假期学习一下。不会的好多</del></strong></li>
+</ul>
+</blockquote>
+<h1 id="4-4-4-6"><a href="#4-4-4-6" class="headerlink" title="4.4-4.6"></a>4.4-4.6</h1><p><strong>假期第一天：上午打游戏，中午吃了昨晚下班时买的罗森便当；晚上去NJ那里，吃了川菜馆子“椒榆”（好像是这个名字），一个炒鸡、一个黄门茄子、一个蒜泥白肉、一个小酥肉（没怎么吃，打包带回去当第二天的早饭了）；之后在附近转了转，然后坐地铁去上地一个超市逛了逛，吃了又一家杏仁豆腐，不如德和斋；打包了红豆双皮奶和一个什么奶回去第二天吃；去地铁站打道回府，路上看见北体的一个小破门，<del>另外还有漂亮MM</del>。之后到家，和SH打了会儿游戏。</strong><br><strong>假期第二天：打游戏的一天奥，无事发生！和SH、NJ打了好久的游戏；中午吃的猪脚饭，还不错；晚上吃的炸蛋螺丝混，也挺不错，熙螺湾这牌子在仙林NJU的对面也开了一家，开了不久；所以点的时候还是比较放心的。</strong><br><strong>假期第三天：中午和NJ一起去安贞门；在一家小巷子里的老馆子里面吃地地地地地地地道儿的百京菜！八大碗中的牛杂，好吃！牛肠煮的最好吃；一个炒牛尾，还行；一个羊杂砂锅，不错，但是没牛杂好吃；一个麻豆腐，挺好吃，很新奇；吃完饭，去买了芬达，合起来和大洋是有点差别，感觉大洋更好喝一点；然后沿河的公园里面有什么花展，走马观花的逛了逛。</strong><br><strong><del>忘记给NJ带德和斋杏仁豆腐了，明明前天才夸下海口…</del></strong><br><strong>三天里，没怎么学习，网络小说倒是没少看；代码什么的搞了搞但好像是在做无用功…..</strong>  </p>
+<h1 id="4-7"><a href="#4-7" class="headerlink" title="4.7"></a>4.7</h1><p><strong>不想上班啊啊啊啊啊啊！</strong><br><strong>上午折腾随身wifi，顺便把qwen-72b-chat完全放到了A800的服务器上，跑了一下服务端，正常；后续工作可能就是，尝试修改模型之类的，再把后端接口什么的搞一搞？</strong></p>
 ]]></content>
   </entry>
 </search>
