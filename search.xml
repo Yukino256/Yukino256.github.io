@@ -418,7 +418,8 @@
 <li><strong>明日任务：阅读论文；学习修改大模型的方法</strong></li>
 </ul>
 </blockquote>
-<h1 id="4-2"><a href="#4-2" class="headerlink" title="4.2"></a>4.2</h1><p><strong>上午，阅读qwen的model_qwen.py文件，尝试理解模型结构，寻找修改方法。最终目的是将kv retrieval加入到模型中去；目前没什么头绪，是直接改model文件，还是写个新的继承一下？继承的话如何与已有文件保持联系和交互？</strong><br><strong>qwen的py代码没有啥注释，突然想到可以看一下transformer包中的代码，拿llama做参考，希望有注释可以好看一点</strong><br><strong>吃了好大的饼</strong><br><strong>将4090机器上的qwen-72b-chat放到A800上，尝试让它跑起来；昨天前辈哥用vllm加速一些模型，基本上没跑起来报错，不知道是什么情况；没查到解决方案</strong></p>
+<h1 id="4-2"><a href="#4-2" class="headerlink" title="4.2"></a>4.2</h1><h2 id="草！这一天干啥了我给忘了！原来日记漏了一天，4-8才发现！"><a href="#草！这一天干啥了我给忘了！原来日记漏了一天，4-8才发现！" class="headerlink" title=" 草！这一天干啥了我给忘了！原来日记漏了一天，4.8才发现！ "></a><font color="red"> <strong>草！这一天干啥了我给忘了！原来日记漏了一天，4.8才发现！</strong> </font></h2><p><strong>好像还是在看代码和教程？</strong></p>
+<h1 id="4-3"><a href="#4-3" class="headerlink" title="4.3"></a>4.3</h1><p><strong>上午，阅读qwen的model_qwen.py文件，尝试理解模型结构，寻找修改方法。最终目的是将kv retrieval加入到模型中去；目前没什么头绪，是直接改model文件，还是写个新的继承一下？继承的话如何与已有文件保持联系和交互？</strong><br><strong>qwen的py代码没有啥注释，突然想到可以看一下transformer包中的代码，拿llama做参考，希望有注释可以好看一点</strong><br><strong>吃了好大的饼</strong><br><strong>将4090机器上的qwen-72b-chat放到A800上，尝试让它跑起来；昨天前辈哥用vllm加速一些模型，基本上没跑起来报错，不知道是什么情况；没查到解决方案</strong></p>
 <blockquote>
 <ul>
 <li><strong><del>明日任务：</del> 明日个P！清明节假期！</strong><br><strong><del>好吧，这个饼还是挺不错的，也许会假期学习一下。不会的好多</del></strong></li>
@@ -439,6 +440,62 @@
 </ul>
 </blockquote>
 <p><strong>晚上在DNF神迹上抽黑钻售货机，因为没有自动抽取的功能，所以尝试用pyautogui写了个自动抽奖的脚本，但是实际运行的时候发现移动位置是对了，但无法点击到游戏程序内部的东西，又发现自己使用鼠标一直点击倒也可以，于是又开了鼠标连点器，发现鼠标连点器也点不到游戏程序内部的东西；这两种相似的现象带来的启发是：这种基于GUI模拟点击的程序，或许没有聚焦到应用程序内部，亦或者是DNF.exe的特殊性之类的。想来之前应该有一个获取游戏窗口的方法，但是不想搞了，就这样吧。</strong></p>
+<blockquote>
+<ul>
+<li><strong>明日任务：继续阅读llama的源码</strong></li>
+</ul>
+</blockquote>
+<h1 id="4-8"><a href="#4-8" class="headerlink" title="4.8"></a>4.8</h1><p><strong>今天，勉强把qwen的model文件看完，仍然是半懂不懂的状况，尤其是generate()和chat()这两个函数。logit的值映射到id再映射到文字，思路很好懂但代码有点复杂</strong><br><strong>后续重新看了GitHub上qwen的项目，以及modelscope上qwen7b模型的具体内容和文件。本来以为modelscope上面的是运行文件之类的，原来它真的只是模型，这个模型安装一定方式组织，transformer还是huggingface依照generation_config.json和config.json来完整的读取模型、运行之类的。运算、生成之类的函数确实是写在这个模型里面的，github上面的是介绍、示例的demo、各个数据集上的测试文件。</strong><br><strong>也就是说，如果要在模型中加入cache的retrieval，就要在modeling_qwen.py这个文件中直接修改？（但是我更希望的是，写个继承的文件然后互不影响？？）</strong><br><strong>得看看论文和论文代码去</strong><br><strong>晚上，和沈教授开了组会，表明目前的问题是不知道怎么改代码一头雾水，直接在模型文件上改感觉不稳妥；他建议我直接改试试</strong>  </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：阅读recurrent-memory-transformer，开始修改qwen代码文件</strong></li>
+</ul>
+</blockquote>
+<h1 id="4-9"><a href="#4-9" class="headerlink" title="4.9"></a>4.9</h1><p><strong>工程师大哥入职噜！希望能带我飞！</strong><br><strong>阅读recurrent-memory-transformer的源码，思考其结构和代码作用</strong><br><strong>modeling_rmt文件，大致上应该是模型文件，其中定义了两个类，MemoryCell——似乎是负责向原有model中加入MemoryCell的类；RecurrentWrapper——似乎是可以将原有model的输出再处理之后的输出，这样看来，好像可以直接将其运用到qwen中去？</strong><br><strong>下午和GG聊了一阵子，到出租屋后又和他聊了大概一个小时；和NJ打了几把大乱斗</strong>  </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：继续阅读recurrent-memory-transformer，开始修改qwen代码文件</strong></li>
+</ul>
+</blockquote>
+<h1 id="4-10"><a href="#4-10" class="headerlink" title="4.10"></a>4.10</h1><p>今日，新入职了一个本地学校的做数据的实习生<br><strong>上午，稍微思考了一下RMT的代码结构和用法；然后尝试在PC上跑一下千问的小模型查看效果</strong><br><strong>采用Int4版本，结果报错：</strong>  </p>
+<blockquote>
+<ul>
+<li>CUDA extension not installed.</li>
+</ul>
+</blockquote>
+<p>尝试安装cudatoolkit，结果依然没有解决<br>破案了，byd一直安装的cpu版本的torch之类的，可能是版本没对齐&#x2F;清华源的问题<br>来自HXD的支援：  </p>
+<blockquote>
+<ul>
+<li>建议用pip<br>别用conda<br>conda不会检查环境里的冲突直接装<br>pip会先看有没有装</li>
+</ul>
+</blockquote>
+<p><strong>他妈的破案了，python和torch版本太高了</strong>    </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：改千问暂停，协助跑通RAGFLOW</strong></li>
+</ul>
+</blockquote>
+<h1 id="4-11"><a href="#4-11" class="headerlink" title="4.11"></a>4.11</h1><p>RAGFlow昨天下午工程师跑了，但是它最方便的功能还是直接调用api，但工程师尝试搞明白阿里的api怎么申请怎么用却失败了；从示例图上开RAgflow可以支持本地模型，但是在我们跑通的结果来看那个图上面的选项消失了，今天工程师问ragflow的群主得知，已经用ollama直接取代了。<br>似乎ollam调用更方便？准备部署ollama试试，但是由于4090显存不够了，因而要将其部署到A800上；镜像的上传又是折磨<br>踩了一个坑：  </p>
+<blockquote>
+<ul>
+<li>scp命令指定远程端口，-p其实要大写成-P才是正确命令</li>
+</ul>
+</blockquote>
+<p>导入之后，显示名称什么的为none，需要使用docker tag命令自己命名<br>继续琢磨怎么加mem， 想搜RMT的解析文章，结果搜出来发现说它就是Transformer-XL，然后去搜transoformer-XL，发现它是2019年的文章被拒稿了？后续改进的XLNet，这个已经被加入到了transformer官方包里面<br>查看了一些代码，感觉加不进去；但似乎渐渐得到了一些理解：这些网络结构什么的已经定好了，包括qwen，这些放在src&#x2F;model下的modeling文件定义了模型，而huggingface或者什么地方可以找到模型的一些与训练好的参数。那么已知的是qwen确实没法改模型结构？最多只能在推理的时候采取一些不影响它模型本身流动的trick，如lora&#x2F;adpter之类的东西。<br>qwen1.5采用了滑动窗口attn，可以提高推理效率；能否提高长文本能力尚不明晰。<br>似乎可行的两个思路：  </p>
+<blockquote>
+<ul>
+<li>使用adapter，直接将之前的kv cache揉到attn里面？  </li>
+<li>直接在模型推进的某一层，对kv cache和外部向量数据库 进行向量检索，然后揉进去？</li>
+</ul>
+</blockquote>
+<p><strong>研究方向暂时转变</strong>：研究ReAct + CoT的应用；唉人在江湖身不由己，但好在是这回有人指导了，希望这段时间代码能力能有突破；越来越觉得LLM尤其需要强工程能力  </p>
+<p>用千问的api，跑RAGFlow成功了，后续工作是更改成本地模型；此外，还有一些功能待添加：聊天界面可以输入图片&#x2F;文件，支持连接sql并发挥BI功能  </p>
+<p>尝试用langchain，将React和CoT结合起来  </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：langchain的ReAct和CoT；了解一下CoT</strong></li>
+</ul>
+</blockquote>
 ]]></content>
   </entry>
 </search>
