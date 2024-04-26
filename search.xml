@@ -430,15 +430,11 @@
 <blockquote>
 <ul>
 <li>RoPe编码的实现，看的半懂不懂，没有深究，后续视情况看是否需要深入。</li>
-<li>llama attention模块中，有这两个参数，尚未搞懂作用是什么：<blockquote>
-<ul>
-<li>cache_position: Optional[torch.LongTensor]</li>
-<li>position_ids: Optional[torch.LongTensor] &#x3D; None</li>
+<li>llama attention模块中，有这两个参数，尚未搞懂作用是什么：</li>
 </ul>
 </blockquote>
-</li>
-</ul>
-</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cache_position: <span class="type">Optional</span>[torch.LongTensor]</span><br><span class="line">position_ids: <span class="type">Optional</span>[torch.LongTensor] = <span class="literal">None</span>  </span><br></pre></td></tr></table></figure>
+
 <p><strong>晚上在DNF神迹上抽黑钻售货机，因为没有自动抽取的功能，所以尝试用pyautogui写了个自动抽奖的脚本，但是实际运行的时候发现移动位置是对了，但无法点击到游戏程序内部的东西，又发现自己使用鼠标一直点击倒也可以，于是又开了鼠标连点器，发现鼠标连点器也点不到游戏程序内部的东西；这两种相似的现象带来的启发是：这种基于GUI模拟点击的程序，或许没有聚焦到应用程序内部，亦或者是DNF.exe的特殊性之类的。想来之前应该有一个获取游戏窗口的方法，但是不想搞了，就这样吧。</strong></p>
 <blockquote>
 <ul>
@@ -475,7 +471,7 @@
 <li><strong>明日任务：改千问暂停，协助跑通RAGFLOW</strong></li>
 </ul>
 </blockquote>
-<h1 id="4-11"><a href="#4-11" class="headerlink" title="4.11"></a>4.11</h1><p>RAGFlow昨天下午工程师跑了，但是它最方便的功能还是直接调用api，但工程师尝试搞明白阿里的api怎么申请怎么用却失败了；从示例图上开RAgflow可以支持本地模型，但是在我们跑通的结果来看那个图上面的选项消失了，今天工程师问ragflow的群主得知，已经用ollama直接取代了。<br>似乎ollam调用更方便？准备部署ollama试试，但是由于4090显存不够了，因而要将其部署到A800上；镜像的上传又是折磨<br>踩了一个坑：  </p>
+<h1 id="4-11"><a href="#4-11" class="headerlink" title="4.11"></a>4.11</h1><p>RAGFlow昨天下午工程师跑了，它最方便的功能还是直接调用api，但工程师尝试搞明白阿里的api怎么申请怎么用却失败了；从示例图上开RAgflow可以支持本地模型，但是在我们跑通的结果来看那个图上面的选项消失了，今天工程师问ragflow的群主得知，已经用ollama直接取代了。<br>似乎ollam调用更方便？准备部署ollama试试，但是由于4090显存不够了，因而要将其部署到A800上；镜像的上传又是折磨<br>踩了一个坑：  </p>
 <blockquote>
 <ul>
 <li>scp命令指定远程端口，-p其实要大写成-P才是正确命令</li>
@@ -544,7 +540,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">route -p add 172.17.39.189 mask 255.255.255.0 173.17.39.254   </span><br></pre></td></tr></table></figure>
 <p>三个地址分别是内网ip、内网掩码、内网网关。<del>（幸好网络接入需要mac验证，不然我这命令还不好放上来）</del>。<br>网上搜的教程还额外所有路由全走了一遍内网，纯沙比做法来的，只要这一个命令其实就可以了。  </p>
 <p>突然发现自己鞋子穿的不是同一双，好笑之余，又有点感慨。或许我仍然没有长大，仍然毛毛燥燥地去面对这社会的一切，或许我就像穿上大人西装的蜡笔小新，在假装成熟。上次发生类似的事情，似乎是袜子还是什么东西穿的不是同一双，已经记不太清了。  </p>
-<p>下午，整了一下午curl访问那个b服务器模型，都失败了；官方文档的命令试过了一点用也没有；但是，使用langchain的命令却成功了？？？？？基本上两小时浪费了，我真是无语子。但好消息是，这个prompt优化的效果，在7b上也很明显。<br>下午还看了一会儿TransformerFAM，似乎有一点实现的思路；不知周末是否会开始写一下 <del>（基本不可能）</del>  </p>
+<p>下午，整了一下午curl访问那个b服务器模型，都失败了；官方文档的命令试过了一点用也没有；但是，使用langchain的命令却成功了？？？？？基本上两小时浪费了，我真是无语子。但好消息是，这个prompt优化的效果，在7b上也很明显。<br>下午还看了一会儿TransformerFAM，似乎有一点实现的思路；不知周末是否会开始写一下 <del>（基本不可能）</del><br>今天发了一部分工资，上个月20号到本月10号的。</p>
 <blockquote>
 <ul>
 <li><strong><del>明日任务：</del>  哇袄！高一下至高二末尾的112寝室！三分之二的四人再聚首！吃一口地地地地道儿的百京八大碗！没毛病奥老铁们！</strong>  </li>
@@ -577,6 +573,43 @@
 <li><strong>明日任务：在服务器上测试修改后的模型效果</strong></li>
 </ul>
 </blockquote>
+<p>晚上，在出租屋混时间，没有打LOL；而是又拾起了✌最爱的怀旧页游！（如果WQ看到，又要搁那儿骂我山猪吃不了细糠啦！哈哈！）这游戏时不时就想捡起来玩一阵子，然后突然感觉无味、因而果断抛弃，往往下定决心再也不碰，却又偶尔想起、心痒难耐。我承认我是一个很怀旧的人，我或许一直无法脱离过去的光影。  </p>
+<h1 id="4-24"><a href="#4-24" class="headerlink" title="4.24"></a>4.24</h1><p>上午，按照计划、尝试在服务器上测试修改后的模型的效果；在部署环境的间歇之余，看了一下qwen1.5的model文件，开头跃入眼帘的就是rotray embedding这个class；其实，看过的model文件，大多都像这样将其放在文件的开头；而且，基本上都是一样的写法，似乎都是从llama或者什么原初模型中copy过来的；鉴于之前并没有太搞懂其原理、代码，只是了解了五六分，因而又打算再看看；花了一阵子时间，看的眼花缭乱，最终收获却不如想象之中那么大，还是没有明晰。<br>终于，在环境部署好之后，尝试运行cli_demo.py，<strong>运行成功了！问答也能正确输出！</strong> 虽然结果不是很好，但是考虑到模型本身、以及加入的attention还没有经过ft或者什么操作，因而已经很满意了！希望这个现象代表的是：修改的内容是成功的，后续是可以推进的。  </p>
+<p><strong>接下来要考虑的，主要有两方面</strong>：</p>
+<blockquote>
+<ul>
+<li><strong>input query过长时的segment和retrieval、或许还有chat history的相关操作</strong>；  </li>
+<li>infini的深入理解，与微调可能；  </li>
+<li>在上述做完之后，qwen1.5的修改与尝试应该就是水到渠成的事情了</li>
+</ul>
+</blockquote>
+<p>今天中午，又发了一部分工资，上个月20号到本月20号的。  </p>
+<p>下午，看了一下其他的论文。准备看streaming-llm的代码，但是这个代码结构我得梳理一下。<br>因为苹果吃完了，所以在楼下lawson买了两个饭团当晚饭；饭团还在打折，好耶！<br>到出租屋，依然混时间；和SH打了两三个消失的大乱斗。  </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：阅读streaming-llm源码，看LLM教程。</strong></li>
+</ul>
+</blockquote>
+<h1 id="4-25"><a href="#4-25" class="headerlink" title="4.25"></a>4.25</h1><p>今天上午，又入职了一位姑娘，似乎是北大的，和上周入职的老哥认识；捏妈，百京真是卧虎藏龙。感觉自己被Top2包围了。<br>看streaming-llm的kv-cache部分的代码，结合论文看，还是有点难懂捏。  &#x3D;&#x3D;<br>中午，突然想起来昨天改的qwen-infini代码似乎有问题；去查看之后果然如此；这么想来，昨天的cuda out of memory应该是一个失误，而不是修改模型成功运行的信号。于是，下午继续琢磨修改；遇到了许多问题。下面列出最严重的问题：</p>
+<blockquote>
+<ul>
+<li><strong>在infini-attention的初始化模块中register_buffer了M和z，同时对其进行kaiming初始化，但是后续forward的时候，却显示M和z是NoneType</strong>：如果不对M和z进行初始化，则回在计算logit的时候报错，因为logit值都为0；这边测试了一下初始化代码的写法，至少可以保证的是，init函数中的M和z是正确初始化的、正确登记的（？）<br>————<strong>原因</strong>：如果模型权重文件里面没有这个buffer，就算我初始化了，加载权重之后也会是nonetype；所以需要在使用之前再强制初始化一下。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>此外，还有似乎是因为精度问题导致的错误：probability tensor contains either inf, nan or element &lt; 0</strong>：可能量化的模型都容易出现这个问题，百川有一个<a href="https://github.com/baichuan-inc/Baichuan2/issues/291">issue</a>似乎可以解决；但是一个下午看的头昏脑胀，不想再加班的，明天再搞吧。</li>
+</ul>
+</blockquote>
+<p>奥牛逼，工程师大哥鼠标灵敏度贼低，结果nm是LOL电一前二十？？？</p>
+<blockquote>
+<ul>
+<li><strong>明日任务：解决问题</strong></li>
+</ul>
+</blockquote>
+<h1 id="4-26"><a href="#4-26" class="headerlink" title="4.26"></a>4.26</h1><p>继续尝试修改错误，首先确定具体问题所在，根据报错结果，去修改代码，print报错之前的相关信息，其probs和softmax之后的结果打印如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#probs</span></span><br><span class="line">tensor([[-inf, -inf, -inf,  ..., -inf, -inf, -inf]], device=<span class="string">&#x27;cuda:0&#x27;</span>, dtype=torch.float16)</span><br><span class="line"></span><br><span class="line"><span class="comment">#prob_after_softmax：       </span></span><br><span class="line">tensor([[<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>,  ..., <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>]], device=<span class="string">&#x27;cuda:0&#x27;</span>, dtype=torch.float16)</span><br></pre></td></tr></table></figure>
+<p>可以看到这个结果，可能是第一个token开始这个概率数值就出错了；正如昨日所说，应该是精度转化的过程中出现了问题。尝试Qwen下面一个issue的<a href="https://github.com/QwenLM/Qwen/issues/276#issuecomment-1825326365">回答</a>，结果运行了很长世界，返回结果如下：<br><img src="error.png" alt="error" title="返回值"><br>一开始运行的时候显卡风扇咔咔吹，我还以为陷入死循环了呢，没想到还是给我返回了结果。这个结果大致上符合预期吧，因为照着上面修改了代码之后，直接选择概率最大的作为decode的值，但是从一开始到最末尾，概率值都为0的情况下，自然所有decode出来的token都是相同的；qwen中这个都是0解出来就是“！”，应该是这样的。<br>总的来说，这个结果是好的，<strong>说明修改代码没有问题，只是精度转化的问题。代码是可以正常跑通、一直decode到最后的</strong>；后面要做的就是进行微调之类的东西了；后续的问题，等到实战的时候再说吧！</p>
 ]]></content>
   </entry>
 </search>
