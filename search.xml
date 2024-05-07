@@ -408,6 +408,16 @@
 <h2 id="又-放-假-辣-！"><a href="#又-放-假-辣-！" class="headerlink" title=" 又 放 假 辣 ！ "></a><font color="red"> <strong>又 放 假 辣 ！</strong> </font></h2><h1 id="3-30-3-31-周末！"><a href="#3-30-3-31-周末！" class="headerlink" title="3.30-3.31  周末！"></a>3.30-3.31  周末！</h1><p><strong>周六早上，和SH打了LOL，中午出去吃了吉野家；下午躺了一会儿，然后晚上和NJ去逛了古玩市场，感觉有点同质化。</strong><br><strong>之后吃了白糖汁儿的杏仁豆腐，然后吃了永和大王的快餐，赶紧赶地铁回来参加TX的笔试题。但实际上我一面已经挂了，结果现在才出来，这题就没必要做了实际上，而且五题只做出来第一题，似乎打竞赛的才能做得出来多题，唉…</strong><br><strong>又和SH打了一会儿大乱斗</strong><br><strong>看小说，睡觉！</strong>  </p>
 <hr>
 ]]></content>
+      <categories>
+        <category>记录</category>
+        <category>大模型</category>
+        <category>实习</category>
+      </categories>
+      <tags>
+        <tag>日记</tag>
+        <tag>随想</tag>
+        <tag>心情</tag>
+      </tags>
   </entry>
   <entry>
     <title>DailyRecord-April</title>
@@ -651,12 +661,78 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda install cuda -c nvidia/label/cuda-12.1.0</span><br></pre></td></tr></table></figure>
 <p>虽然echo的结果还是空，但是nvcc -V显示的cuda版本是12.1，对了！<br>再次尝试运行，结果报错：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">KeyError: <span class="string">&#x27;conversations&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>搜了一下，说是数据格式的问题。接下来要调整数据格式。结果发现自己铸币，dict中的conversations少打了一个s😅。<br>一切调整好之后，运行终于成功了！让它在A800上跑着吧！<br>不对，10天太长了！我应该先抽取一点数据，暂定4w条吧，进行训练试试；数据集这一块儿的选取其实还需要仔细斟酌。<br>抽取了数据，训练大概需要7小时；明天看一下结果！<br><img src="training.png" alt="training" title="正在训练"> </p>
+<p>搜了一下，说是数据格式的问题。接下来要调整数据格式。结果发现自己铸币，dict中的conversations少打了一个s😅。<br>一切调整好之后，运行终于成功了！让它在A800上跑着吧！<br>不对，10天太长了！我应该先抽取一点数据，暂定4w条吧，进行训练试试；数据集这一块儿的选取其实还需要仔细斟酌。<br>抽取了数据，训练大概需要7小时；明天看一下结果！</p>
+<p><strong>好吧！来自沈教授的场外支援！我超参数用的默认的，这这不对。现在全数据也只要训17小时！明天中午就好了！</strong><br><img src="training.png" alt="training" title="正在训练"> </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：查看训练结果，思考后续优化方向（更好的数据集？）</strong></li>
+</ul>
+</blockquote>
+<h1 id="4-30"><a href="#4-30" class="headerlink" title="4.30"></a>4.30</h1><p>梳理一下目前的思路吧：</p>
+<blockquote>
+<ul>
+<li>首先，对于目前长文本的解决思路，有两种，一是采用faiss之类的向量库，对输入的query进行重构、检索、增强；这种方法见效快，但是受到模型本身功能的限制；如果模型长文本能力、理解与提炼能力本身不足的话，这个方法遇到瓶颈之后就无法提升了。其次，则是对模型底层进行重构、修改，这种方法理论上可能性是无限的，但是，在实践过程中的问题在于，大模型对我们来说是一个黑箱。正如上面所提到的，在加入infini-attn的时候，模型的基本对话能力大大下降了；新增的参数，会对预训练好的权重造成影响，因而需要进行ft，这里的问题在于：训练数据如何选取？如何训练？评测集是什么？  </li>
+<li>一个重点是，上面提到的两种方法，都需要使用到：对于input query的segment&#x2F;cut，以及之后的融合。原因在于，对于前者来说，query长度当然是固定的，我们所追求的目标是在有限的query长度中构建最好的prompt，对于长文本，则可能需要分段精炼再整合、循环往复；而对于后者，尽管不需要在prompt阶段耗费大量经历，但是模型本身的输入也是有长度限制的。目前不知道这个长度限制能否设置去改变，以Qwen-7B-Chat为例，它的输入长度就是512个token。加入infini之后，理论上可以接受无限长的数据，但是需要在generate&#x2F;chat或者哪个传入query的时候对query进行slice，一段段的喂入。效果上来说和全部输入没有区别，但是因为模型限制，需要一段段传入（细想一下不应该这样，或许可以设置输入无限长？）</li>
+</ul>
+</blockquote>
+<p>今早的坏消息是：昨天的train的东西，似乎在我这边ssh断开之后就停止了？总而言之，预定的中午训练完成是没有的。我只好再次从里面提取更少的30w条数据，进行训练，需要三小时，预计今天中午完成。<br>今早，出于同事们接入A800服务器的需求，突然想到可以把我目前在用的转接的这个eth给接到服务器上，这样服务器可以直连公司外网和A800；同时，我们的eth虽然不能访问公司外网，但是可以通过内网连接到服务器。也就是说，只要这样做，就可以都正常使用A800了！试了试果然成功了！<br>昨天调用train.sh的时候，一个有趣的现象是：安装flash-attention后脚本会报错；这是因为我在model里面没改flash-attention的函数，因而加入的参数矩阵似乎因为shape不匹配无法相乘、使用flash-attn加速，卸载之后就好了。当时想要用flash的原因在于，10天的训练时间太长辣！但是后来多亏沈教授的支援，让我在实践中对LLM中ft的超参和作用有了更深的理解。<br>顺便记录一下后续应该会常用的命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># nvidia-smi实时刷新</span></span><br><span class="line">watch -n 5 nvidia-smi</span><br><span class="line"><span class="comment"># 查看文件夹下文件及其大小</span></span><br><span class="line"><span class="built_in">ls</span>  -lht</span><br></pre></td></tr></table></figure>
+<p>只会显示窗口大小内可以放下的gpu状态，如缩略状态是0-3卡，全屏化只会是0-7卡。<br>查看qwen的各种文件，主要是config文件和chat方法，查看query的处理流程，似乎模型里面query进行split不太难？<br>午休过后，模型跑完了，准备加载模型并检验效果，结果出现了如下报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ValueError: Trying to <span class="built_in">set</span> a tensor of shape torch.Size([64, 32, 128, 128]) <span class="keyword">in</span> <span class="string">&quot;M&quot;</span> (<span class="built_in">which</span> has shape torch.Size([32, 128, 128])), this look incorrect.</span><br></pre></td></tr></table></figure>
+<p>对此，GPT大人的答复是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">这个错误提示表明你正在尝试将一个形状为 [64, 32, 128, 128] 的张量设置到一个形状为 [32, 128, 128] 的张量中</span><br></pre></td></tr></table></figure>
+<p>琢磨了一个小时不得其解。与同事讨论之后，去上了个厕所，急躁的心略有平静。灵光一现，问题解决了！<br>首先，最奇怪的是，这个M是register_buffer的cache，按理来说不是一个可学习的参数，在init中设置的初始形状就是三维的。而这里显示的是四维tensor载入到M。这带来的问题是：M不应该被保存到模型中，而是应该在每次query输入&#x2F;对话开始的时候被重新初始化。<br>同时，这个四维tensor的第一维度大小是64，这个64是batch size，是我昨天调整的时候设置的。那么，结合上面的逻辑，这个64维出现在这里，应该是训练的时候，batch中有64个样本，对应64个M，因而最后，register_buffer保存的是这个形状的tensor。在加载模型的时候，M初始化应该是三维的，但是模型文件里面它想从safetensor里面加载M出错了，原因在于形状不符合。<br>那么，问题的关键在于，register buffer的这两个参数不应该被记录到模型文件中去。解决方法很简单，persistent参数设置为False即可。<br>解决这个问题后，用一个数据进行模型的训练、保存，并最后进行模型加载与对话，成功了！<br>重新用之前准备好的数据去训练模型的时间已经不够了，于是我重新准备了COIG-PC中命名实体识别领域的10w条数据，只需要70分钟即可训练完成。同时，由于COIG-PC中这个数据集样本的文本都比较长，感觉也可以同时训练一点长文本和对话能力。一个参考样本数据如下：</p>
+<pre><code>当给一个没有标注的中文文本添加实体标记时，可以按照以下简明指示进行操作： 阅读并理解待标注的文本，识别出其中的实体，包括时间、地点、人名、组织名、公司名和产品名。 根据实体的类型，在实体文本两侧使用双大括号（&#123;&#123;&#125;&#125;）进行标记。 在双大括号内部，使用实体类型和冒号分隔实体文本，格式为：&#123;&#123;实体类型: 实体文本&#125;&#125;。 根据实际情况，使用以下标记类型来表示不同的实体： 时间：&#123;&#123;time: 2023年5月29日&#125;&#125; 地点：&#123;&#123;location: 北京&#125;&#125; 人名：&#123;&#123;person_name: 张三&#125;&#125; 组织名：&#123;&#123;org_name: 中国共产党&#125;&#125; 公司名：&#123;&#123;company_name: 腾讯&#125;&#125; 产品名：&#123;&#123;product_name: iPhone 13&#125;&#125; 在整个文本中，通过添加实体标记将所有识别出的实体进行标注。 确保实体标记的格式统一、准确，并与实体文本对应。 请按照如上指示标记下面文本：浙江在线杭州4月25日讯（记者 施宇翔 通讯员 方英）毒贩很“时髦”，用微信交易毒品。没料想警方也很“潮”，将计就计，一举将其擒获。记者从杭州江干区公安分局了解到，经过一个多月的侦查工作，江干区禁毒专案组抓获吸贩毒人员5名，缴获“冰毒”400余克，毒资30000余元，扣押汽车一辆。黑龙江籍男子钱某长期落脚于宾馆、单身公寓，经常变换住址。他有一辆车，经常半夜驾车来往于杭州主城区的各大宾馆和单身公寓，并且常要活动到凌晨6、7点钟，白天则在家里呼呼大睡。钱某不寻常的特征，引起了警方注意。禁毒大队通过侦查，发现钱某实际上是在向落脚于宾馆和单身公寓的吸毒人员贩送“冰毒”。
+</code></pre>
+<p>训完之后，可以在对话中直接用这个样本测试一下效果。<br>好吧，由于测试数据很单一，结果不好（测试数据是句法分析好像是）<br><img src="badoutput.png" alt="badoutput" title="句法分析"><br>我将会用全数据去调一下，看看效果。理论上说，这个infini-attn的结构，用于单一场景应该是见效很快的。训练数据可能需要多样性、包含对话之类的。这个结构说实话不太有趣。我希望能尽量不对已有参数造成影响，而是增强。<br>130G全数据A800也放不下，只能用Top200的数据，多跑几个epoch了。</p>
 <blockquote>
 <ul>
 <li><strong>明日任务：查看训练结果，思考后续优化方向（更好的数据集？）</strong></li>
 </ul>
 </blockquote>
 ]]></content>
+      <categories>
+        <category>记录</category>
+        <category>大模型</category>
+        <category>实习</category>
+      </categories>
+      <tags>
+        <tag>日记</tag>
+        <tag>随想</tag>
+        <tag>心情</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DaliyRecord-May</title>
+    <url>/2024/05/02/DaliyRecord-May/</url>
+    <content><![CDATA[<h1 id="5-1-——-5-5"><a href="#5-1-——-5-5" class="headerlink" title="5.1 —— 5.5"></a>5.1 —— 5.5</h1><p>5.1 五一假期的第一天。再说一遍：我恨调休！我恨调休！<br>昨天晚上21：46的火车，早上6：35火车到站。只有站票，我和LT带了马扎上去，结果发现能放马扎的地方也很少。在4月中旬的时候，我和LT说一起回家，聊到站票买马扎的事情，我说我买两个，他不用买直接过来就行，结果他忘了自己也买了一个。于是多出了个小马扎。我是14车，LT是15车，他在15车帮我占了个位置，结果发现是厕所门口，而这个厕所的门还坏了，乘务员过来修反而把门直接给搞下来了；中途，LT试图将多余的马扎以15R推销出去，结果失败了🤣🤣🤣🤣。<br>每节车厢都带个厕所，因而站票大抵是都要在厕所附近窝着的我是不想当老八的，正好听闻说餐车那边有空位，因而我拎着我的两个小马扎过去找位子。到那儿发现餐车坐满了，估计都是站票过来买饭送座位的。餐车的尽头比较空旷，只有一个哥们儿在地上铺了个纸躺着。我在这儿蹲了下来，LT怕被赶走，让我看看情况，半小时没人赶就叫他。确实没人赶，然后他就过来了，过来一合计，吃点东西，然后去问有没有空位。乘务员腾了两个相邻的位子给我们，然后96r，没得选择，两人吃鱼香肉丝饭。我吃了一碗半，LT吃了两碗半。吃完后，可以名正言顺的占用餐桌。<br>由于跨月，因而碧蓝航线要刷一下大世界的剩余体力，玩手机到1点，LT默默陪着我一起玩，我放下手机趴下他也趴下了。说实在话，虽然有坐，但是不安静，乘务员嘈杂，他们不关心你是不是在睡觉；尤其是2点多乘务员集体早餐，我们那个位置需要暂时让一下给乘务员吃饭，吃完饭一般立刻就走了，但是有不走的留在桌子上、东百口音的男的在吹牛逼，不压低声音。总而言之，到4、5点的时候，我们也只睡了质量很低的断断续续的2小时左右。然后到了开早饭的时候，被乘务员撵走了，我们到了餐车末尾的地方蹲了一小时，又被撵走了。<br>总之，6.35到车站，然后LT他妈妈开车来带我们，把我送到家。妈妈在家等我，我洗了个澡，然后七点多开始睡觉，一下睡到中午12.30。然后去门市吃午饭，牛肉啥的，家常菜。啊！家的味道！<br>下午，LSH叫我出去上网，我们把LT叫上了。线上叫了道哥，以及我的研究生同门SH，凑了五黑，大大乱斗。下午两点打到8点，十几把输了两把，爽赢！网吧有茶水售卖，喝了红茶。<br>然后，我骑的自行车留在了网吧门口，LT开车带我、LSH、SXZ一起去步行街吃龙虾。喝啤酒、吃下酒菜，倾诉一下，聊聊在北京一个月的一些经历和感想。啤酒喝晕了，他们驾着我打车去浙江商城那儿的KTV唱歌。我真不知道自己是怎么过去的，只知道自己被人驾着。到那儿，躺到了0：30，醒了，唱歌到2点，走路回家睡觉。<br>和朋友们喝酒是开心的、唱歌是开心的。<br>5.2 五一假期第二天。中午去我爹那儿吃午饭。我的大爷、我爸的新对象和那个女儿也来了，喝了点啤酒，聊了聊一些烦恼。但是在这里接收到的只有“努力！拼搏！”一类的大道理、大男子&#x2F;大家长主义的说教。挫败，再次决定不应该向这里倾诉一些东西了，在母亲那儿更放松一点。但这个家族氛围就是这样，总体上还是和睦的、较好的，一些东西应该学会去忍受。<br>下午，依旧昨天的配置、昨天的阵容，今天点了枸杞菊花茶，因为感觉这个好像是明目的，最近感觉视力有所下降。一开始连跪，沉默不语，然后连胜了，最后打到18点多，光荣下播！<br>骑着自行车到门市吃饭捏，家的味道！*2🥰🥰<br>5.3 五一假期的第三天。中午去我爹那儿吃饭，下午还是和他们一起去网吧。晚上去门市吃饭，之后去了舅爹舅奶家。看了看菜地、菜地边上舅爹晒太阳的破沙发。我妈看生菜长得好要了点回去。之后，在地下室的屋子里面坐着聊天，临走时，我把装在信封里面的、从银行取出来的新钱2k给了舅爹舅奶，实习工资的一部分，很有纪念意义。感到舅爹舅奶有点手足无措、又有点失落。<br>5.4 五一假期第四天。中午去门市吃饭，然后在家里躺了一会儿。下雨了，NZY告诉我他在初中部那儿和初中老师吃饭。LT开车去带了他，还带来了HL。我们一起在网吧打了一两盘，他们就都走了。HL感觉没啥精气神儿了，这班上的。NZY也好像有点心事，感觉他不像以前那样开心了。晚上，到门市吃饭，和妈妈一起回家。<br>5.5 今天回百京。下雨，早起坐上去宿迁的车，大概9点到高铁站。13点多到百京，点了个东北铁盒饭外卖，到出租屋的时候吃。下午和SH打了大乱斗，一直输。在出租屋没事干，混日子呗。  </p>
+<p>家里真舒服啊！真舒服啊！</p>
+<h1 id="5-6"><a href="#5-6" class="headerlink" title="5.6"></a>5.6</h1><p>复工。查看五一期间跑的训练怎么样了。发现训练没跑完，然后vscode远程sshA800也连不上了，但是bash可以连。百思不得其解。终于发现原因是保存的checkpoint文件太多、把硬盘填满了（本来剩下几百G）。测试checkpoint的效果，正常问答和指令问答效果都很差。看样子需要重新斟酌。需要仔细选取数据，进行调整。或者直接放弃改底层模型，因为这导致训好的模型被利用的很差。  </p>
+<p>此外，加载模型时候有这个提示：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Some weights of the model checkpoint at output_qwen/checkpoint-2000 were not used when initializing QWenLMHeadModel: [<span class="string">&#x27;transformer.h.0.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.1.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.10.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.11.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.12.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.13.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.14.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.15.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.16.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.17.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.18.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.19.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.2.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.20.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.21.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.22.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.23.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.24.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.25.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.26.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.27.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.28.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.29.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.3.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.30.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.31.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.4.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.5.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.6.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.7.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.8.attn.bias&#x27;</span>, <span class="string">&#x27;transformer.h.9.attn.bias&#x27;</span>]</span><br><span class="line"></span><br><span class="line">- This IS expected <span class="keyword">if</span> you are initializing QWenLMHeadModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).</span><br><span class="line"></span><br><span class="line">- This IS NOT expected <span class="keyword">if</span> you are initializing QWenLMHeadModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).</span><br><span class="line"></span><br><span class="line">Some weights of QWenLMHeadModel were not initialized from the model checkpoint at output_qwen/checkpoint-2000 and are newly initialized: [<span class="string">&#x27;transformer.h.0.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.1.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.10.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.11.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.12.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.13.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.14.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.15.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.16.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.17.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.18.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.19.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.2.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.20.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.21.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.22.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.23.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.24.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.25.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.26.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.27.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.28.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.29.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.3.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.30.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.31.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.4.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.5.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.6.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.7.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.8.attn.beta&#x27;</span>, <span class="string">&#x27;transformer.h.9.attn.beta&#x27;</span>]</span><br><span class="line"></span><br><span class="line">You should probably TRAIN this model on a down-stream task to be able to use it <span class="keyword">for</span> predictions and inference.</span><br></pre></td></tr></table></figure>
+<p>attention的bias和我后面新加的beta参数，没有从模型中加载到。为什么？bias这个好像不影响。但是beta是核心参数，没了直接乱说一气。</p>
+<p>开发大哥那边需求连接服务器，需要服务器接上wifi，同时能够连接A800。本以为是个改路由的大工程，但是没想到直接接入网络就行了。也许是接入网络先后顺序的问题？搞不懂。  </p>
+<p>改了infini里面的结构，本来是融合后在projection，我把projection放前面了。因为我不想动这个projection的参数，只想训练融合的参数信息。不知道结果会怎样。如果后融合的话，projection的参数也要变，模型本身能力直接寄。</p>
+<p>晚上，开了例会。前辈哥给出了问题的可能解决方法，明天需要测试一下：</p>
+<blockquote>
+<ul>
+<li>检查checkpoint目录下的config.json、modeling_qwen.py文件是否与预期一致</li>
+<li><strong>super().<strong>init</strong>(config)</strong> 移到最后，检查是否是继承类的初始化问题</li>
+</ul>
+</blockquote>
+<p>此外，对于c_proj是否需要调整位置的问题，建议还是先不调整试试，一般影响不大。   </p>
+<p>晚上，和LT、SH一起大乱斗，赢！  </p>
+<h1 id="5-7"><a href="#5-7" class="headerlink" title="5.7"></a>5.7</h1><p>测试昨晚商讨的解决方案。</p>
+]]></content>
+      <categories>
+        <category>记录</category>
+        <category>大模型</category>
+        <category>实习</category>
+      </categories>
+      <tags>
+        <tag>日记</tag>
+        <tag>随想</tag>
+        <tag>心情</tag>
+      </tags>
   </entry>
 </search>
