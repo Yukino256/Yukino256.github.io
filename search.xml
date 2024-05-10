@@ -56,7 +56,7 @@
   <entry>
     <title>记录自己的初次搭建博客的经历——流程、路径与感悟</title>
     <url>/2023/04/24/BlogBuilding/</url>
-    <content><![CDATA[<p>安装流程可以参见 [这篇文章] (<a href="https://zhuanlan.zhihu.com/p/158975269">https://zhuanlan.zhihu.com/p/158975269</a>)<br>部署时尤其需要注意的设置：将hexo设置里面的分支名称改成与GitHub<a href="https://zhuanlan.zhihu.com/p/345841098">一致</a>，因为前两年GitHub把main branch名字改了..</p>
+    <content><![CDATA[<p>安装流程可以参见 <a href="https://zhuanlan.zhihu.com/p/158975269">这篇文章</a><br>部署时尤其需要注意的设置：将hexo设置里面的分支名称改成与GitHub<a href="https://zhuanlan.zhihu.com/p/345841098">一致</a>，因为前两年GitHub把main branch名字改了..</p>
 <h2 id="1-网站部署的原理和逻辑是什么？"><a href="#1-网站部署的原理和逻辑是什么？" class="headerlink" title="1.网站部署的原理和逻辑是什么？"></a>1.网站部署的原理和逻辑是什么？</h2><p>在最开始，面对各种搭建网站的框架，本人其实是迷茫的，因为我一时间无法理解为什么经过这些步骤就能够产出一个可以被访问的页面？<br>直到我在站点快搭建完成时，我才突然明白其原理，或许接下来的要说理解有点不准确，但是仍然在这里记录一下：  </p>
 <ol>
 <li>首先，需要理解的就是，网络上所有的资源都是以二进制的方式传输的，网站也是这样，传输的是010101的数据流，而不是直接将页面呈现在电脑上。数据在经过网络传输至本地的时候，需要本地利用某种“解码软件”将其转换成更高级的、便于用户阅读、输入的模式。浏览器其实就是将01数据解析成html等代码，然后再通过渲染、代码执行，将数据以GUI的形式呈现出来的解析器。</li>
@@ -99,7 +99,7 @@
 <p>因为这个错误换了好多主题….本来其他主题也蛮漂亮的唉… </p>
 <p>但是新页面还有问题，可能在我不知道的地方起了作用，尽管显示没有问题：<br>Error with Permissions-Policy header: Origin trial controlled feature not enabled: ‘interest-cohort’.</p>
 <p>其实在途中还遇到一个错误，稀里糊涂就没有了。</p>
-<h2 id="7-后续考虑加入的功能"><a href="#7-后续考虑加入的功能" class="headerlink" title="7.后续考虑加入的功能"></a>7.后续考虑加入的功能</h2><h3 id="博客定时自动更新-https-hexo-io-zh-cn-docs-one-command-deployment-html"><a href="#博客定时自动更新-https-hexo-io-zh-cn-docs-one-command-deployment-html" class="headerlink" title="[博客定时自动更新] (https://hexo.io/zh-cn/docs/one-command-deployment.html)"></a>[博客定时自动更新] (<a href="https://hexo.io/zh-cn/docs/one-command-deployment.html">https://hexo.io/zh-cn/docs/one-command-deployment.html</a>)</h3><p>很简单，没搞是因为没必要，学习是需要时间的，不需要频繁更新…….<br><img src="Heroku.png" alt="Heroku" title="配置示例"></p>
+<h2 id="7-后续考虑加入的功能"><a href="#7-后续考虑加入的功能" class="headerlink" title="7.后续考虑加入的功能"></a>7.后续考虑加入的功能</h2><h3 id="博客定时自动更新"><a href="#博客定时自动更新" class="headerlink" title="博客定时自动更新"></a><a href="https://hexo.io/zh-cn/docs/one-command-deployment.html">博客定时自动更新</a></h3><p>很简单，没搞是因为没必要，学习是需要时间的，不需要频繁更新…….<br><img src="Heroku.png" alt="Heroku" title="配置示例"></p>
 <h3 id="动态页面"><a href="#动态页面" class="headerlink" title="动态页面"></a>动态页面</h3><h3 id="真正理解Hexo的底层原理"><a href="#真正理解Hexo的底层原理" class="headerlink" title="真正理解Hexo的底层原理"></a>真正理解Hexo的底层原理</h3><h2 id="8-一些感想"><a href="#8-一些感想" class="headerlink" title="8.一些感想"></a>8.一些感想</h2><ul>
 <li>在配置过程中遇到过很多报错、和不了解的地方，直接搜索报错结果固然可以找到解决方法，但是很多可以查阅官方文档来解决。查阅固然快，但往往会使得”知其然而不知其所以然”。直接搜答案的过程和询问chatGPT很类似，工程性的问题只答复解决步骤，而不分析背后原理</li>
 <li>Hexo也许是一套程序，自动提供一套框架，功能是将我们提交的文本，按照模板或者自己设定的样子渲染出来。同样功能的还要jekell，但是好像是Linux上比较好用。Hexo是静态网页框架，对于博客够用，但是动态网页框架才是未来的选择。</li>
@@ -703,8 +703,8 @@
       </tags>
   </entry>
   <entry>
-    <title>DaliyRecord-May</title>
-    <url>/2024/05/02/DaliyRecord-May/</url>
+    <title>DailyRecord-May</title>
+    <url>/2024/05/02/DailyRecord-May/</url>
     <content><![CDATA[<h1 id="5-1-——-5-5"><a href="#5-1-——-5-5" class="headerlink" title="5.1 —— 5.5"></a>5.1 —— 5.5</h1><p>5.1 五一假期的第一天。再说一遍：我恨调休！我恨调休！<br>昨天晚上21：46的火车，早上6：35火车到站。只有站票，我和LT带了马扎上去，结果发现能放马扎的地方也很少。在4月中旬的时候，我和LT说一起回家，聊到站票买马扎的事情，我说我买两个，他不用买直接过来就行，结果他忘了自己也买了一个。于是多出了个小马扎。我是14车，LT是15车，他在15车帮我占了个位置，结果发现是厕所门口，而这个厕所的门还坏了，乘务员过来修反而把门直接给搞下来了；中途，LT试图将多余的马扎以15R推销出去，结果失败了🤣🤣🤣🤣。<br>每节车厢都带个厕所，因而站票大抵是都要在厕所附近窝着的我是不想当老八的，正好听闻说餐车那边有空位，因而我拎着我的两个小马扎过去找位子。到那儿发现餐车坐满了，估计都是站票过来买饭送座位的。餐车的尽头比较空旷，只有一个哥们儿在地上铺了个纸躺着。我在这儿蹲了下来，LT怕被赶走，让我看看情况，半小时没人赶就叫他。确实没人赶，然后他就过来了，过来一合计，吃点东西，然后去问有没有空位。乘务员腾了两个相邻的位子给我们，然后96r，没得选择，两人吃鱼香肉丝饭。我吃了一碗半，LT吃了两碗半。吃完后，可以名正言顺的占用餐桌。<br>由于跨月，因而碧蓝航线要刷一下大世界的剩余体力，玩手机到1点，LT默默陪着我一起玩，我放下手机趴下他也趴下了。说实在话，虽然有坐，但是不安静，乘务员嘈杂，他们不关心你是不是在睡觉；尤其是2点多乘务员集体早餐，我们那个位置需要暂时让一下给乘务员吃饭，吃完饭一般立刻就走了，但是有不走的留在桌子上、东百口音的男的在吹牛逼，不压低声音。总而言之，到4、5点的时候，我们也只睡了质量很低的断断续续的2小时左右。然后到了开早饭的时候，被乘务员撵走了，我们到了餐车末尾的地方蹲了一小时，又被撵走了。<br>总之，6.35到车站，然后LT他妈妈开车来带我们，把我送到家。妈妈在家等我，我洗了个澡，然后七点多开始睡觉，一下睡到中午12.30。然后去门市吃午饭，牛肉啥的，家常菜。啊！家的味道！<br>下午，LSH叫我出去上网，我们把LT叫上了。线上叫了道哥，以及我的研究生同门SH，凑了五黑，大大乱斗。下午两点打到8点，十几把输了两把，爽赢！网吧有茶水售卖，喝了红茶。<br>然后，我骑的自行车留在了网吧门口，LT开车带我、LSH、SXZ一起去步行街吃龙虾。喝啤酒、吃下酒菜，倾诉一下，聊聊在北京一个月的一些经历和感想。啤酒喝晕了，他们驾着我打车去浙江商城那儿的KTV唱歌。我真不知道自己是怎么过去的，只知道自己被人驾着。到那儿，躺到了0：30，醒了，唱歌到2点，走路回家睡觉。<br>和朋友们喝酒是开心的、唱歌是开心的。<br>5.2 五一假期第二天。中午去我爹那儿吃午饭。我的大爷、我爸的新对象和那个女儿也来了，喝了点啤酒，聊了聊一些烦恼。但是在这里接收到的只有“努力！拼搏！”一类的大道理、大男子&#x2F;大家长主义的说教。挫败，再次决定不应该向这里倾诉一些东西了，在母亲那儿更放松一点。但这个家族氛围就是这样，总体上还是和睦的、较好的，一些东西应该学会去忍受。<br>下午，依旧昨天的配置、昨天的阵容，今天点了枸杞菊花茶，因为感觉这个好像是明目的，最近感觉视力有所下降。一开始连跪，沉默不语，然后连胜了，最后打到18点多，光荣下播！<br>骑着自行车到门市吃饭捏，家的味道！*2🥰🥰<br>5.3 五一假期的第三天。中午去我爹那儿吃饭，下午还是和他们一起去网吧。晚上去门市吃饭，之后去了舅爹舅奶家。看了看菜地、菜地边上舅爹晒太阳的破沙发。我妈看生菜长得好要了点回去。之后，在地下室的屋子里面坐着聊天，临走时，我把装在信封里面的、从银行取出来的新钱2k给了舅爹舅奶，实习工资的一部分，很有纪念意义。感到舅爹舅奶有点手足无措、又有点失落。<br>5.4 五一假期第四天。中午去门市吃饭，然后在家里躺了一会儿。下雨了，NZY告诉我他在初中部那儿和初中老师吃饭。LT开车去带了他，还带来了HL。我们一起在网吧打了一两盘，他们就都走了。HL感觉没啥精气神儿了，这班上的。NZY也好像有点心事，感觉他不像以前那样开心了。晚上，到门市吃饭，和妈妈一起回家。<br>5.5 今天回百京。下雨，早起坐上去宿迁的车，大概9点到高铁站。13点多到百京，点了个东北铁盒饭外卖，到出租屋的时候吃。下午和SH打了大乱斗，一直输。在出租屋没事干，混日子呗。  </p>
 <p>家里真舒服啊！真舒服啊！</p>
 <h1 id="5-6"><a href="#5-6" class="headerlink" title="5.6"></a>5.6</h1><p>复工。查看五一期间跑的训练怎么样了。发现训练没跑完，然后vscode远程sshA800也连不上了，但是bash可以连。百思不得其解。终于发现原因是保存的checkpoint文件太多、把硬盘填满了（本来剩下几百G）。测试checkpoint的效果，正常问答和指令问答效果都很差。看样子需要重新斟酌。需要仔细选取数据，进行调整。或者直接放弃改底层模型，因为这导致训好的模型被利用的很差。  </p>
@@ -722,7 +722,73 @@
 </blockquote>
 <p>此外，对于c_proj是否需要调整位置的问题，建议还是先不调整试试，一般影响不大。   </p>
 <p>晚上，和LT、SH一起大乱斗，赢！  </p>
-<h1 id="5-7"><a href="#5-7" class="headerlink" title="5.7"></a>5.7</h1><p>测试昨晚商讨的解决方案。</p>
+<blockquote>
+<ul>
+<li><strong>明日任务：测试解决方案是否可行</strong></li>
+</ul>
+</blockquote>
+<h1 id="5-7"><a href="#5-7" class="headerlink" title="5.7"></a>5.7</h1><p>测试昨晚商讨的解决方案。无效果。<br>尝试打印模型结构和参数，结果显示attn已经修改，且模型参数里面有beta：<br><img src="model_arc.png" alt="model_arc" title="模型结构"><br><img src="beta.png" alt="beta" title="beta存在"><br>没办法，上不去下不来，卡在这儿了😅<br>看了一下相关的issue，似乎是加载模型的问题，好像要改from_pretrained。  </p>
+<p>来自ZYR的场外支援！开了个腾讯会议，排查了两小时，确定是from_pretrain的问题！我到这不知道该怎么办，他给出了<strong>另一种加载模型的方式</strong>：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoConfig</span><br><span class="line"><span class="keyword">from</span> safetensors.torch <span class="keyword">import</span> load_model</span><br><span class="line">config = AutoConfig.from_pretrained(<span class="string">&quot;/home/zhangshuo/Qwen-main/Qwen-7B-Chat-Mem&quot;</span>)</span><br><span class="line">model = AutoModelForCausalLM.from_config(config)</span><br><span class="line">ckpt_file_1 = <span class="string">&quot;/home/zhangshuo/Qwen-main/Qwen-7B-Chat-Mem/model-00001-of-00004.ckpt&quot;</span></span><br><span class="line">model.load_state_dict(torch.load(ckpt_file_1), strict=<span class="literal">False</span>)</span><br><span class="line">ckpt_file_2 = <span class="string">&quot;/home/zhangshuo/Qwen-main/Qwen-7B-Chat-Mem/model-00002-of-00004.ckpt&quot;</span></span><br><span class="line">model.load_state_dict(torch.load(ckpt_file_2), strict=<span class="literal">False</span>)</span><br><span class="line">ckpt_file_3 = <span class="string">&quot;/home/zhangshuo/Qwen-main/Qwen-7B-Chat-Mem/model-00003-of-00004.ckpt&quot;</span></span><br><span class="line">model.load_state_dict(torch.load(ckpt_file_3), strict=<span class="literal">False</span>)</span><br><span class="line">ckpt_file_4 = <span class="string">&quot;/home/zhangshuo/Qwen-main/Qwen-7B-Chat-Mem/model-00004-of-00004.ckpt&quot;</span></span><br><span class="line">model.load_state_dict(torch.load(ckpt_file_4), strict=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>在此之前，需要将safetensor逐个转化为ckpt文件：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> safetensors.torch <span class="keyword">import</span> load_file</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">path = sys.argv[<span class="number">1</span>]</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;path not exists&#x27;</span>)</span><br><span class="line">    sys.exit(<span class="number">0</span>)</span><br><span class="line">device = <span class="string">&#x27;cpu&#x27;</span></span><br><span class="line">weights = load_file(path, device=device)</span><br><span class="line">weights[<span class="string">&quot;state_dict&quot;</span>] = weights</span><br><span class="line">torch.save(weights, os.path.splitext(path)[<span class="number">0</span>] + <span class="string">&#x27;.ckpt&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>将safetensor转化成ckpt，然后加载。加载的比from_pretrain慢好多！但是问题解决了！我必须立刻去研究一下这个加载方式的原理！<br><strong>真得给我朱哥磕一个吧，帮我太多了！</strong><br>safetensor是安全的，也就是说为了确保安全性、不包含恶意代码之类的，就要限制其中的东西，因而不让改动，也可以理解。 我定位到了问题，但没能解决的原因，在于对权重文件及其加载了解不深入，实际上这对我是傻瓜式的操作、黑箱。<br>晚上没有战斗，混日子捏……感觉不到啥拼搏的动力，浑浑噩噩月光族也是活着……  </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：测试训练好模型的效果</strong></li>
+</ul>
+</blockquote>
+<h1 id="5-8"><a href="#5-8" class="headerlink" title="5.8"></a>5.8</h1><p>昨天的代码，默认是在cpu上加载模型的，需要改成如下格式</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">device = torch.device(<span class="string">&quot;cuda&quot;</span>)</span><br><span class="line">torch.load(ckpt_name, map_location=device) </span><br><span class="line">model.to(device)  <span class="comment"># 这一步不知道究竟是否需要</span></span><br></pre></td></tr></table></figure>
+<p>对话效果烂了。我决定照着原论文的结构来复现，再训练一遍，看看到底怎么回事。<br>看了过程中tensor的shape，似乎之前的代码shape不对？也许效果不好的原因就在于此。改了之后再跑训练看看效果叭！<br>趁着训练的时候，查看ckpt和safetensor的区别。<br><del>ckpt这种文件似乎是torch的官方保存方式，以dict形式存储torch.nn.module的模型结构及其对应的参数，在加载的时候使用torch.load加载。这个过程是很直观简单的。（正常训练结束的文件，好像应该是.pt或者.pth？）</del><br>以下内容来自网络：  </p>
+<blockquote>
+<ul>
+<li><strong>.ckpt文件是Pytorch Lightning框架中使用的模型文件格式之一。Pytorch Lightning是一个基于Pytorch的轻量级深度学习框架，它提供了更简单和更高层次的API，用于训练和管理深度学习模型。.ckpt文件保存了模型的参数和优化器的状态，并且通常还包含训练的元数据信息。</strong></li>
+<li><strong>.pth文件是Pytorch中最常见的模型文件格式之一。它是一个二进制文件，包含了模型的参数和状态。.pth文件保存了模型的权重和各层的参数，可以方便地用于加载和恢复模型。通过保存模型为.pth文件，我们可以在需要时重新加载模型，并使用它进行预测或继续训练。</strong></li>
+</ul>
+</blockquote>
+<p>也就是说，pth是base，ckpt是进阶，safetensor是再进阶？知乎上<a href="https://zhuanlan.zhihu.com/p/686570419">这篇</a>解释safetensor还不错。<br>看了一些讲解，了解到，不同类型的模型、训练方法会自定义save和load的方法，文件名之类的也有差别，这种要具体情况具体分析。  </p>
+<p>修改模型之后，重新训练，结果还是像以前那样，只能回答第一句话，后面的话无了。其原因在哪儿？需要print以下tensor的情况是否存在之类的。目前的猜想是：首先，不可能是训练数据只有单轮对话的原因，因为这无非是输入长短的问题，不应该是一点输出都没有。在多轮对话中，一点结果都不返回的话，说明第二轮及以后的decode都是&lt;!i’m end&gt;这种东西；这个问题的原因，可能在于魔改模型烂了，M和z对后续输出造成了很坏的负面应用，这个方法不通；也有可能是ft的方法、量级不对。亦或者，一个原因是M和z使用、更新的顺序出问题，导致后续decode无法进行之类的。<strong>因而，目前首先需要print所有decode的结果，而非对话</strong><br><img src="bug.png" alt="decode" title="decode"><br>输入之后，print出make_context中raw_context的结果，发现decode的结果是直接无了。思考这个现象出现的原因，应该是魔改模型+ft导致模型本身的能力被破坏殆尽；训练数据中都是单轮对话的数据，因而无法decode出多轮对话的结果，它输入进去的都只是一个system+user的对话，过拟合导致只能输出一轮对话的结果，后面直接decode成end了。<br>这个猜想的可能性是很大的。目前，不能确定自己魔改的代码在思路上是没有问题的，因而：  </p>
+<blockquote>
+<ul>
+<li>可能需要再仔细斟酌一下代码修改，需要查看这个decode过程中的tensor(句子、M、z)；</li>
+<li>也有可能代码没问题，纯因为这个方法需就是烂，水出来的；</li>
+<li>也有可能是需要大量数据喂进去才能看到效果。 </li>
+<li>也有可能，是safetensor向ckpt转化过程中损失了参数；因为似乎ckpt to safetensor是可以无损的，而反过来不行，因为safetensor是一种压缩、精简的格式；</li>
+</ul>
+</blockquote>
+<p>查看M和z在forward过程中的数值更新：<br><img src="Mz.png" alt="Mz" title="Mz"><br>查看M和z的具体数字后，发现其过大，没收敛在一个固定范围内😡。但是、似乎、好像、Attn的结果，是M和z除；因而Attn不会受到太大影响才对？<br><strong>感觉脑子不够用了，一天能认真思考的时间好短捏。思考多了头晕。</strong>（tmd不是因为我节食了营养这一块儿没人给我补吧？）<br>好吧，确定一下思路：修正M和z的更新公式，使得其稳定，需要参考<a href="https://github.com/Beomi/InfiniTransformer/blob/main/infini_llama/modeling_infini_llama.py">另一个论文实现的开源项目</a>，这个项目适配了llama和Gemma，应该是好的。  </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：修正M和z的更新公式，力求将其限定在一定范围内波动，避免数值溢出。</strong></li>
+</ul>
+</blockquote>
+<h1 id="5-9"><a href="#5-9" class="headerlink" title="5.9"></a>5.9</h1><p>查看上面说的开源项目llama版本的改动，发现其在初始化阶段只初始化了beta，且beta是一个和MHA的shape相匹配的tensor而非单独的数值。这样，每个头有一个参数，似乎更加符合论文中的做法：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.gate = nn.Parameter(torch.full((<span class="number">1</span>, self.num_heads, <span class="number">1</span>, <span class="number">1</span>), <span class="number">0.0</span>))</span><br></pre></td></tr></table></figure>
+<p>modeling的代码中有past_kv，查看这个tensor是否存在、shape是否合理；按理来说这个应该是自增的。<br><img src="kvpast.png" alt="kvpast" title="kvpast"><br>确实是随着token的逐步decode递增的，第二个维度是query_len，输入+prompt大差不差是这个数。<br>又回顾了M和z的具体数值，发现<strong>主要是z过大</strong>，那么最简单的方法就是对z做norm，但是这个操作没出现在论文中，最好还是再分析一下代码是否有问题。<br>再去看一下论文：<br><img src="%E5%85%AC%E5%BC%8F.png" alt="公式" title="公式"><br>原来z只是归一化的分母，它就应该是大的，无所谓；但是M不应该是大的，这个问题出现的原因，可能是代码实现中没有关注 <strong>“element-wise”</strong> 这个操作<br>修改完之后，再次训练，预计下班后能训好。这次训练查看效果，还是重点关注两方面的内容：</p>
+<blockquote>
+<ul>
+<li>对话是否正常</li>
+<li>如果对话不正常，则查看M和z，尤其是M，需要控制其在一定范围内</li>
+</ul>
+</blockquote>
+<p>M为什么会突发性的过大？这个M的公式上看，增量更新应该没问题，也许是代码写的不对？<br>查看代码，感觉没什么问题，再仔细看一会儿，真没问题那就没办法了。<br>训练中断，加载checkpoints-1000的参数看看能否多轮对话，似乎有多轮对话的能力；但是没有看M和z的具体数值。又改了代码。把beta改成了shape为[1, 1, self.num_heads, 1]的tensor，再次训练，看看效果。预计明天看看今天训的两个模型的效果和M、z的具体数值。  </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：查看两次修改的ft效果，明确是否是数据量不足的原因；思考限制M和z范围的方法；</strong></li>
+</ul>
+</blockquote>
+<h1 id="5-10"><a href="#5-10" class="headerlink" title="5.10"></a>5.10</h1><p>昨晚跑一半服务器断了，今早发现连不上服务器了，ssh也不行。<br><strong>静观其变，相机而动！</strong><br>继续看一下streaming-llm的论文和源代码，这个项目的star涨的好快，现在已经有6.2k了，看样子很有可取之处。这个论文的核心思想还是sparse attention机制，只不过是在观察了attention logits的数值分布特征之后，提出的针对这个特征的sparse方案。<br><strong>另</strong>：win11上配置ssh server的<a href="https://www.sysgeek.cn/openssh-windows/">教程</a>，就是nm几mb的东西为什么安装的那么慢？而且还安装失败？————好吧，似乎是梯子的问题，把梯子关了之后正常安装了。和pip换清华源之后不能开梯子install有异曲同工之妙。  </p>
+<p>streaming-llm对positio embedding也做了调整，感觉如果改qwen1的话会很麻烦，因为它的代码不明晰。</p>
+<p>分析一下streaming-llm种modify_llama.py文件的思路：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">apply_rotary_pos_emb_single</span>(<span class="params">x, cos, sin, position_ids</span>):</span><br><span class="line">    <span class="comment"># The first two dimensions of cos and sin are always 1, so we can `squeeze` them.</span></span><br><span class="line">    cos = cos.squeeze(<span class="number">1</span>).squeeze(<span class="number">0</span>)  <span class="comment"># [seq_len, dim]</span></span><br><span class="line">    sin = sin.squeeze(<span class="number">1</span>).squeeze(<span class="number">0</span>)  <span class="comment"># [seq_len, dim]</span></span><br><span class="line">    cos = cos[position_ids].unsqueeze(<span class="number">1</span>)  <span class="comment"># [bs, 1, seq_len, dim]</span></span><br><span class="line">    sin = sin[position_ids].unsqueeze(<span class="number">1</span>)  <span class="comment"># [bs, 1, seq_len, dim]</span></span><br><span class="line">    x_embed = (x * cos) + (rotate_half(x) * sin)</span><br><span class="line">    <span class="keyword">return</span> x_embed</span><br></pre></td></tr></table></figure>
+<p>这个函数的作用，顾名思义是进行RoPE；而“single”的意义在于，指定位置进行RoPE，而不是一整个raw context。这个函数的作用正好和论文中的 <strong>“根据cache进行位置编码”</strong> 相对应。通过这个函数，可以自由选定、构建token组进行RoPE。<br>我也查看了qwen1中的RoPE，应该就是这样，没有问题。  </p>
+<p>下午nm给拉出去干杂活，说明天早起去那儿打下手现在去踩点😅，挤在出租车上有点晕；然后nm到中关村会议中心那儿啥事儿没干，蹲了一会儿出去找饭吃，吃了31的大盘鸡拌面，味道一般，比不上南京一根；然后吃一半打电话来说不用再回去了直接回家😅😅😅😅😅，纯dirty work了属于是。实习生牛马忍气吞声ing。  </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：当杂活、群演、牛马😅😅</strong></li>
+</ul>
+</blockquote>
 ]]></content>
       <categories>
         <category>记录</category>
