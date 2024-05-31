@@ -909,9 +909,7 @@
 <h1 id="5-24"><a href="#5-24" class="headerlink" title="5.24"></a>5.24</h1><p>早上改retriever，之前其他类型的index to retriever的部分没有跑通，可能是不兼容或者数据格式不对？<br>开了个会。发现在国企里面开发只需要做应声虫就可以了，提的意见和想法人家都当没听到。纯按照先入为主的理解在聊、派任务。反正我实习生不背锅，你咋说我咋做呗！<br>反正是准备跑路了，这边本来说的卡现在也没了，科研也不让做了，做开发还nm没人带，没有培养机制，还nm催进度。我的评价是草台班子一拖四。  </p>
 <p>回顾这段时间，本来刚来的时候和沈老师那边会开会，也有一些指导，但是渐渐会也不开了。本来说沈老师那边的学生们能一起聊一聊，结果那边的学生也就开了一两次会，就再也没来。由于距离遥远，感觉沟通的时候也很费劲。总而言之，刚开始的时候还兢兢业业，慢慢发现这边是个草台班子、研发队伍和管理机制混乱、缺陷较大。虽然学到了点东西，但是感觉不多。需要一个新环境、正式的、有明确培养机制的环境。  </p>
 <p><strong>预计六月初辞职，然后面面其他的吧唉。总归是一步慢、步步慢。理想情况下是一月份就开始实习，然后4月辞职或是请假什么的投暑期实习，然后中途休息一下、旅个游啥的，然后暑期实习回来投秋招。但是现在，无可奈何地晚了两个月，只能步步紧逼，却又总是赶不及……</strong><br><strong>回顾从高中毕业到现在的时间，因为懒惰、愚蠢而导致的信息差，错过了许多机会、有许多可以更好的选择没有做出。悲叹没有意义了，只能吃更多的苦……</strong>  </p>
-<br>
-<br>
-
+<hr>
 <p><img src="documentsummary.png" alt="docsummary" title="docsummary"> </p>
 <p>向项目里面加入了document summary retriever，这个需要调用llm解析文档，因而慢，或许换成embedding会好一些。<br>换成embedding的写法：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">retriever = DocumentSummaryIndexEmbeddingRetriever(</span><br><span class="line">    doc_summary_index,</span><br><span class="line">    <span class="comment"># similarity_top_k=1,</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
@@ -930,7 +928,43 @@
 <li><strong>明日任务：阅读RAG相关论文&#x2F;后端api实现与修改</strong></li>
 </ul>
 </blockquote>
-]]></content>
+<h1 id="5-28"><a href="#5-28" class="headerlink" title="5.28"></a>5.28</h1><p>继续测试本地多路召回的效果，基本已经定型了。<br>晚上开会说，差不多可以推进在线的了。也就是说要调通api<br>刷了两道leetcode </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：调整在线api</strong></li>
+</ul>
+</blockquote>
+<h1 id="5-29"><a href="#5-29" class="headerlink" title="5.29"></a>5.29</h1><p>记录一下查看端口进程的命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看端口进程</span></span><br><span class="line">netstat -anp | grep 端口号</span><br><span class="line"><span class="comment"># or  </span></span><br><span class="line">netstat -tnlp | grep 端口号</span><br></pre></td></tr></table></figure>
+
+<p>尝试修复在线多路召回的API，正如之前定位的那样，问题代码应该出在这两行：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">chroma_collection = chromadb_client.get_collection(kb_id)</span><br><span class="line">vector_store = ChromaVectorStore(collection_name=kb_name, collection=chroma_collection, host = <span class="string">&#x27;localhost&#x27;</span>, port = <span class="number">8000</span>)</span><br></pre></td></tr></table></figure>
+<p>collection显示doc是存在的，但是dict最后两个key显示的是none：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;data&#x27;</span>: None, <span class="string">&#x27;uris&#x27;</span>: None</span><br></pre></td></tr></table></figure>
+<p>vectorstore读取后，显示collection为空。<br>又去GitHub issue上看了一下，终于明白了解决思路：首先，这个问题其实不是vector store的问题，而是bm25计算的问题。在llama index中，bm25计算需要的是nodes，也只能通过nodes进行bm25的构建，并没有适配从vector store转化到bm25的api，这是源码本身的缺陷。<br>那么，解决思路也就很明确了：要么自己去改源码，适配这个转化；要么就搞一个返回document的函数，然后在bm25创建前面读取这个返回的document，再构建nodes传入。出于方便和稳定性考虑，还是采取后者，当然这种做法会浪费一些时间，因为预先构建的切片不能使用，还要再构建一遍。<br>修改之后，api可以跑通了。但是时间花费很大，不知道是不是因为gpu资源不足的原因。可以看到，生成query、SYNTHESIZE、LLM三步花费时间巨多。<br><img src="%E6%97%B6%E9%97%B4%E8%8A%B1%E8%B4%B9.png" alt="时间花费" title="时间花费"><br>比较奇怪的是，在之前的步骤里面，直接从本地文档读取的话，反而不慢。明明这修改后的代码只是额外生成了一次bm25，但是时间却增加了好多。难道是因为后续一系列数值要重新计算、结构要重新生成？<br>看来后续有很大的优化空间；此外，很有意思的一点是，这个用于bm25的、由document转化而来的nodes，其数据结构和chroma直接读取的collection似乎很相似，前者似乎是List[Dict{}]，而后者似乎是Dict{List[]}；没有细看，但或许可以写一个转化函数，直接转化成nodes的数据格式导入bm25计算。  </p>
+<p>晚上，和SH、LT打大乱斗捏。  </p>
+<blockquote>
+<ul>
+<li><strong>明日任务：似乎要配合前端来展示项目总体的效果。</strong></li>
+</ul>
+</blockquote>
+<h1 id="5-30"><a href="#5-30" class="headerlink" title="5.30"></a>5.30</h1><p>昨天的测试对话结果巨慢，但是今天，同样的东西，结果反而快了很多，直接变成了昨天测试的十几分之一？<br>后端对接了之前的前端，做了测试。发现这个前端基本都是写死的，对话、设置啥的没法调整，其实无法测试目前修改的效果。但是从fastapi和命令行结果来看，应该是没有问题的。<br>api里面document部分啥的还需要修改一下。今天修正了doc_index_create这个api。<br>下班前开会</p>
+<p>下午，叶man阿姨突然打电话来，说周末可以吃饭。我一开始看到河北廊坊的号码还在好奇呢，以为是诈骗电话啥的都没想接，犹豫一下还是接了，没想到是叶阿姨！叶阿姨是我幼儿园时候，在俺爹开的小公司上过班的姐姐，后面虽然走了，但是和我妈妈关系很好，她们一直有联系。我也是大概大三？或是什么时候才加上她，但是刚加上的时候说了几句话，后面一直没联系，没啥说的感觉。这次趁我在北京这个机会，吃个饭，这很好！家里喝的茶叶似乎有不少都是叶阿姨给的。好久不见！也不知道如今能不能认出来，唉！我小时候对她的相貌记忆是一点也没有了！她的女儿在百京海淀区上学，马上高考了！我去！京✌！  </p>
+<p>刷了3道题，基本都是回溯。基本不会。基本看答案。需要加强。</p>
+<blockquote>
+<ul>
+<li><strong>明日任务：我不到啊！看一步吧！</strong></li>
+</ul>
+</blockquote>
+<h1 id="5-31"><a href="#5-31" class="headerlink" title="5.31"></a>5.31</h1><p>今天和后端实习生一起测试了各种api，逐个排查，修正了一些bug。五部分的api，有三个部分都可以跑通了。<br>项目里面有一个小bad case就是，把id和name混淆了，函数名称啥的没改，在函数内部用查询把name转化成了id。<br>测试前端对话能否调用后端，主要是对话api。其他的前端内容基本上都是假的。对话有四类：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">CHAT_TYPE = [<span class="string">&quot;RAG_CHAT&quot;</span>,<span class="string">&quot;RAG_SEARCH&quot;</span>,<span class="string">&quot;LLM_CHAT&quot;</span>,<span class="string">&quot;RAG_RERANK&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p>前两个对话好像是一样的返回结果。本质上这俩对话没啥区别？<br>第三、四个对话，结果和前两个不一样。快下班的时候总算是跑通了。之前是ollama 显存不够所以没跑通。</p>
+<blockquote>
+<ul>
+<li><strong>下周任务：优质解答——我不知道</strong></li>
+</ul>
+</blockquote>
+<h1 id="五月结束了！到北京来已经两个多月了！回首过去，是一段不太美好，但应该还是比较有价值的经历……？"><a href="#五月结束了！到北京来已经两个多月了！回首过去，是一段不太美好，但应该还是比较有价值的经历……？" class="headerlink" title="五月结束了！到北京来已经两个多月了！回首过去，是一段不太美好，但应该还是比较有价值的经历……？"></a>五月结束了！到北京来已经两个多月了！回首过去，是一段不太美好，但应该还是比较有价值的经历……？</h1>]]></content>
       <categories>
         <category>记录</category>
         <category>大模型</category>
