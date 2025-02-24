@@ -1256,10 +1256,17 @@
 <p>仍然没有解决我的疑问。 我想，可能是accelerator、deepspeed的并行方法我没有理解过，对我来说是一个黑箱。</p>
 <h1 id="GRPO中的reward如何写"><a href="#GRPO中的reward如何写" class="headerlink" title="GRPO中的reward如何写"></a>GRPO中的reward如何写</h1><p><a href="https://github.com/huggingface/open-r1/blob/main/src/open_r1/rewards.py">openR1的官方参考</a></p>
 ]]></content>
+      <categories>
+        <category>大模型， 强化学习</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>LLM， RL</tag>
+      </tags>
   </entry>
   <entry>
     <title>Mi老鼠：小米实习期间摸鱼看其他知识</title>
-    <url>/2025/02/23/Mi%E8%80%81%E9%BC%A0%EF%BC%9A%E5%B0%8F%E7%B1%B3%E5%AE%9E%E4%B9%A0%E6%9C%9F%E9%97%B4%E6%91%B8%E9%B1%BC%E7%9C%8B%E5%85%B6%E4%BB%96%E7%9F%A5%E8%AF%86/</url>
+    <url>/2025/02/22/Mi%E8%80%81%E9%BC%A0%EF%BC%9A%E5%B0%8F%E7%B1%B3%E5%AE%9E%E4%B9%A0%E6%9C%9F%E9%97%B4%E6%91%B8%E9%B1%BC%E7%9C%8B%E5%85%B6%E4%BB%96%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<h2 id="大模型基本功"><a href="#大模型基本功" class="headerlink" title="大模型基本功"></a>大模型基本功</h2><p><a href="https://zhuanlan.zhihu.com/p/716344766">ybq</a>说的挺好的</p>
 <h2 id="神中神代码"><a href="#神中神代码" class="headerlink" title="神中神代码"></a>神中神代码</h2><p><a href="https://github.com/pytorch-labs/gpt-fast/tree/main">gpt-fast</a><br>面面俱到，我只能说写的太好了！甚至包含tensor parallel<br>但需要注意的是，transformer部分写法似乎只支持推理，因为强制生成kv_cache的占位空间才能正常运行，在训练中这是不必要的。<br>但改起来似乎也很方便，理论上把<a href="https://github.com/pytorch-labs/gpt-fast/blob/main/model.py#L137">这行</a>注释掉就行？</p>
 <h2 id="采样解析（greedy，-beamsearch，-topK，-topP，-temperature，-联合策略）"><a href="#采样解析（greedy，-beamsearch，-topK，-topP，-temperature，-联合策略）" class="headerlink" title="采样解析（greedy， beamsearch， topK， topP， temperature， 联合策略）"></a>采样解析（greedy， beamsearch， topK， topP， temperature， 联合策略）</h2><p><a href="https://hengsblog.top/2023/11/01/decoder/">https://hengsblog.top/2023/11/01/decoder/</a><br>温度只控制图像的陡峭程度，不改变值的相对大小（当然由于精度问题，一些值被截断后可能会和其他值相等）<br>温度会使得绝对大小的差值改变。<br>那么，在最后输出的备选词A B C中选择一个，由于温度改变了原有的概率绝对大小，在备选词进行概率<strong>重新归一化</strong>然后选择这一步，选择token的概率完全改变了<br>因为最后选择的代码大概是这么个思想：</p>
@@ -1304,12 +1311,18 @@
 
 <p>attention mask 输出的shape是1 * seq len，在输入到模型之后，会被一个方法转化成1 * seq len * seq len<br>同时，一个样本输入到模型中，经过qkv的计算，得到的attn weight的shape是1 * seq len * seq len<br>正好加上mask，然后 * V得到attn output的shape则是1 * seq len * hidden dim<br>也就是说，一个样本样本确实需要用到seq len * seq len的attn mask</p>
 ]]></content>
+      <categories>
+        <category>大模型， 基础知识</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>LLM， 基础</tag>
+      </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2025/02/23/train-parallelism-understanding/</url>
-    <content><![CDATA[<hr>
-<h2 id="title-train-parallelism-understandingdate-2025-02-23-14-05-43tags"><a href="#title-train-parallelism-understandingdate-2025-02-23-14-05-43tags" class="headerlink" title="title: train-parallelism-understandingdate: 2025-02-23 14:05:43tags:"></a>title: train-parallelism-understanding<br>date: 2025-02-23 14:05:43<br>tags:</h2><p><strong>在小米实习接到的第一个工作，是对MiLM进行长文本SFT。具体而言，部门内部的SFT代码之前并没有适配TP（tensor parallelism）， 13B、30B模型训练单卡最多防线22K个token，长文本训练使用PoSE来增强，实际上还是不完全的阉割版。</strong><br><strong>在我来的时候，TP的框架已经被前一个实习生适配的差不多了，因而我基于此开始进行后续的训练，以及代码理解、代码调整与PR等</strong><br><strong>TP的概念图还比较容易理解，但是具体代码，影响到方方面面，需要在多处进行修改，我还是花了很大的功夫去进行理解，在此记录自己的路径与一些思考</strong>  </p>
+    <title>LLM中的并行策略————如何理解与理解路径记录</title>
+    <url>/2025/01/10/train-parallelism-understanding/</url>
+    <content><![CDATA[<p><strong>在小米实习接到的第一个工作，是对MiLM进行长文本SFT。具体而言，部门内部的SFT代码之前并没有适配TP（tensor parallelism）， 13B、30B模型训练单卡最多防线22K个token，长文本训练使用PoSE来增强，实际上还是不完全的阉割版。</strong><br><strong>在我来的时候，TP的框架已经被前一个实习生适配的差不多了，因而我基于此开始进行后续的训练，以及代码理解、代码调整与PR等</strong><br><strong>TP的概念图还比较容易理解，但是具体代码，影响到方方面面，需要在多处进行修改，我还是花了很大的功夫去进行理解，在此记录自己的路径与一些思考</strong>  </p>
 <h1 id="TP与SP是什么，如何实现？"><a href="#TP与SP是什么，如何实现？" class="headerlink" title="TP与SP是什么，如何实现？"></a>TP与SP是什么，如何实现？</h1><p><a href="https://insujang.github.io/2024-01-11/tensor-parallelism-and-sequence-parallelism-detailed-analysis/">张量并行与序列并行细节分析</a></p>
 <h1 id="TP-SP流程："><a href="#TP-SP流程：" class="headerlink" title="TP+SP流程："></a>TP+SP流程：</h1><p>参考：<a href="https://xtuner.readthedocs.io/zh-cn/latest/acceleration/train_extreme_long_sequence.html">Xtuner</a>  </p>
 <blockquote>
@@ -1345,5 +1358,12 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num_layers, <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">    dx=layers[i].backward(dx)</span><br></pre></td></tr></table></figure>
 <p>此处即完成了梯度传递给前一层。<br>实际上，获取上一层、计算当前层、传递给下一层，都集成在了这一个里面。</p>
 ]]></content>
+      <categories>
+        <category>大模型， 并行策略</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>LLM， parallelism</tag>
+      </tags>
   </entry>
 </search>
